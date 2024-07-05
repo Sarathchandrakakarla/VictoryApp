@@ -13,7 +13,7 @@ function Login(username, password, navigateFun, url) {
   if (username == '' || password == '') {
     ToastAndroid.show('Please Fill All The Details!', ToastAndroid.SHORT);
   } else {
-    fetch('http://192.168.3.107:3000/' + url, {
+    fetch('http://192.168.14.107:3000/' + url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

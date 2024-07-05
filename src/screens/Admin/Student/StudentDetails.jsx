@@ -20,7 +20,7 @@ const StudentDetails = () => {
       ToastAndroid.show('Please Enter Student Id No.', ToastAndroid.SHORT);
       return;
     }
-    fetch('http://192.168.3.107:3000/student/viewdetails', {
+    fetch('http://192.168.14.107:3000/student/viewdetails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
