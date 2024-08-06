@@ -1,0 +1,25 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/NotoSerifDisplay-Bold.ttf",
+      "sha1": "471dc38cb06eca4503ebbecc41711b7008c3f6e5"
+    },
+    {
+      "path": "assets/fonts/NotoSerifDisplay-Regular.ttf",
+      "sha1": "5bd7f8a811e76ed0f2f5d34279ad515bf1e4bfec"
+    },
+    {
+      "path": "assets/fonts/NotoSerifDisplay_Condensed-BlackItalic.ttf",
+      "sha1": "a051bec4b8de6fc1b3b7cfc64eb9055d49faf949"
+    },
+    {
+      "path": "assets/fonts/RobotoSlab-Bold.ttf",
+      "sha1": "e1e5ce44825aa846d38fb41a33cfc070acfd00f5"
+    },
+    {
+      "path": "assets/fonts/RobotoSlab-Regular.ttf",
+      "sha1": "a596c45dd9bf15341eefb7dde7fc8422a5dc7056"
+    }
+  ]
+}

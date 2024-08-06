@@ -9,18 +9,21 @@ import {
 import React, {useEffect, useState} from 'react';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
 import {DataTable} from 'react-native-paper';
+import axios from 'axios';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const StudentDetails = () => {
   const [Id_No, setIdNo] = useState('');
   const [details, SetDetails] = useState([]);
-  /* useEffect(() => {
-    console.log(details);
-  },[details]); */
   function getDetails(id_no) {
     if (id_no == '') {
       ToastAndroid.show('Please Enter Student Id No.', ToastAndroid.SHORT);
       return;
     }
-    fetch('http://192.168.14.107:3000/student/viewdetails', {
+    //https://victoryserver.onrender.com
+    /* fetch('http://18.61.98.208:3000/student/viewdetails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,20 +34,43 @@ const StudentDetails = () => {
     })
       .then(response => response.json())
       .then(res => {
+        console.log(res);
         if (!res.success) {
           SetDetails([]);
           ToastAndroid.show(res.message, ToastAndroid.SHORT);
         } else {
-          SetDetails(res.data);
+          SetDetails([res.data]);
         }
+      }); */
+    axios
+      .post(
+        'http://18.61.98.208:3000/student/viewdetails',
+        {
+          Id_No: id_no,
+        },
+        {
+          timeout: 5000,
+        },
+      )
+      .then(res => {
+        if (!res.data.success) {
+          SetDetails([]);
+          ToastAndroid.show(res.data.message, ToastAndroid.SHORT);
+        } else {
+          SetDetails(res.data.data);
+        }
+      })
+      .catch(err => {
+        ToastAndroid.show('Error: ' + err, ToastAndroid.SHORT);
       });
   }
   return (
     <ScrollView style={styles.container}>
       <View style={{flexDirection: 'row'}}>
-        <Text style={{color: '#000', marginTop: 40, marginLeft: 20}}>
+        <Text style={{color: '#000', marginTop: hp("5"), marginLeft: wp("5")}}>
           Student Id No.
         </Text>
+
         <TextInput
           style={styles.input}
           placeholder="Id No."
@@ -54,14 +80,14 @@ const StudentDetails = () => {
         />
       </View>
       <View style={{alignItems: 'center'}}>
-        <View style={{flexDirection: 'row', gap: 20}}>
+        <View style={{flexDirection: 'row', gap: wp("5")}}>
           <TouchableOpacity
-            style={styles.button}
+            style={styles.button_show}
             onPress={() => getDetails(Id_No)}>
             <Text style={{color: '#fff'}}>View Details</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button}
+            style={styles.button_clear}
             onPress={() => {
               setIdNo('');
               SetDetails([]);
@@ -80,7 +106,7 @@ const StudentDetails = () => {
                   details[1][1] +
                   '.jpg',
               }}
-              style={{width: 150, height: 200, borderRadius: 10}}
+              style={{width: wp("38"), height: wp("45"), borderRadius: 10}}
             />
           </View>
           <DataTable style={styles.table_container}>
@@ -111,11 +137,11 @@ const StudentDetails = () => {
                   }
                   return (
                     <DataTable.Row key={index}>
-                      <DataTable.Cell style={{width: 150}}>
+                      <DataTable.Cell style={{width: wp("40")}}>
                         {col[0]}
                       </DataTable.Cell>
                       <DataTable.Cell
-                        style={{width: 250, maxWidth: 500, overflow: 'scroll'}}>
+                        style={{width: wp("60"), maxWidth: wp("150"), overflow: 'scroll'}}>
                         {col[1]}
                       </DataTable.Cell>
                     </DataTable.Row>
@@ -136,36 +162,42 @@ export default StudentDetails;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#E6E6FA',
   },
   input: {
-    width: 250,
-    height: 40,
-    margin: 32,
+    width: wp("50"),
+    height: hp("5"),
+    margin: wp("7"),
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
     color: '#000',
   },
-  button: {
-    backgroundColor: '#000',
-    width: 150,
+  button_show: {
+    backgroundColor: '#006F40',
+    width: wp('35'),
     padding: 10,
-    marginTop: 0,
+    borderRadius: 50,
+    alignItems: 'center',
+  },
+  button_clear: {
+    backgroundColor: '#ffa500',
+    width: wp('35'),
+    padding: 10,
     borderRadius: 50,
     alignItems: 'center',
   },
   details_container: {
-    marginTop: 24,
+    marginTop: hp("4"),
     elevation: 5,
     backgroundColor: '#DBD7D2',
-    marginHorizontal: 15,
+    marginHorizontal: wp("4"),
     borderRadius: 10,
-    marginBottom: 20,
+    marginBottom: hp("5"),
   },
   image_container: {
     alignItems: 'center',
-    margin: 10,
+    margin: wp("3"),
   },
   table_container: {
     backgroundColor: '#fff',

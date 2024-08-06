@@ -2,13 +2,11 @@ import {
   Image,
   ImageBackground,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import React from 'react';
-import {widthPercentageToDP as wp,heightPercentageToDP as hp} from "react-native-responsive-screen";
 const Home = () => {
   return (
     <ScrollView style={styles.container}>
@@ -20,20 +18,20 @@ const Home = () => {
         <View>
           <Image
             source={require('../assets/building.jpg')}
-            style={{width: wp("90"), height: hp("20"), borderRadius: 20,resizeMode:"stretch"}}
+            style={{width: 390, height: 195, borderRadius: 20,resizeMode:"stretch"}}
           />
         </View>
         <View>
           <Text style={styles.p}>
             👉
-            <Text style={{fontFamily:"RobotoSlab-Bold"}}>
+            <Text style={{fontWeight: 'bold', fontStyle: 'italic'}}>
               Victory
             </Text>{' '}
             is the Place Where Future Talented Minds Assemble...
           </Text>
           <Text style={styles.p}>
             👉
-            <Text style={{fontFamily:"RobotoSlab-Bold"}}>
+            <Text style={{fontWeight: 'bold', fontStyle: 'italic'}}>
               Victory
             </Text>{' '}
             is the Place Which Brings Glory To Your Skill...
@@ -43,9 +41,9 @@ const Home = () => {
           <Text
             style={{
               color: '#000',
-              fontSize: hp("2.5"),
+              fontWeight: 'bold',
+              fontSize: 20,
               textAlign: 'center',
-              fontFamily:"RobotoSlab-Bold"
             }}>
             Our Features
           </Text>
@@ -102,24 +100,21 @@ const styles = StyleSheet.create({
   },
   h2: {
     color: 'white',
-    fontSize: wp("6"),
+    fontSize: 35,
     margin: 50,
     marginBottom: 20,
-    marginLeft: 50,
-    fontFamily:"NotoSerifDisplay_Condensed-BlackItalic",
-    letterSpacing:5
+    marginLeft: 20,
+    fontStyle: 'italic',
   },
   title: {
-    fontSize: wp("6"),
+    fontSize: 35,
     color: 'white',
     margin: 50,
     marginTop: 0,
-    marginLeft: 70,
-    fontFamily:"NotoSerifDisplay_Condensed-BlackItalic",
-    letterSpacing:4,
+    marginLeft: 95,
+    fontStyle: 'italic',
   },
   div2: {
-    height:hp("115"),
     padding: 20,
     paddingBottom:0,
     borderTopLeftRadius: 40,
@@ -128,21 +123,18 @@ const styles = StyleSheet.create({
     paddingBottom:20
   },
   p: {
-    fontSize: wp("4"),
+    fontSize: 18,
     color: '#000',
     marginVertical: 10,
-    fontFamily:"RobotoSlab_Regular",
   },
   notify: {
-    fontSize: hp("2"),
+    fontSize: 15,
     color: '#000',
     marginVertical: 10,
     lineHeight: 25,
-    fontFamily:"RobotoSlab_Regular",
-    textAlign:"justify"
   },
   div3: {
-    height: hp("70"),
+    height: 620,
     padding: 20,
     borderRadius:40,
     textAlign: 'justify',
@@ -150,13 +142,13 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#fff',
-    width: wp("35"),
-    height: hp("18"),
+    width: 150,
+    height: 150,
     borderRadius: 20,
   },
   card_img: {
-    width: wp("35"),
-    height: hp("17"),
+    width: 150,
+    height: 150,
     resizeMode:"cover"
   },
   card_text: {
@@ -164,6 +156,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     marginTop: 15,
-    fontFamily:"RobotoSlab_Regular",
   },
 });

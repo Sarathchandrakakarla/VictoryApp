@@ -23,7 +23,7 @@ function MainPage() {
         tabBarStyle: {
           backgroundColor: '#fff',
           paddingBottom: 5,
-          height: 50,
+          height: 55,
         },
         tabBarLabelStyle: {
           fontSize: 14,
@@ -88,6 +88,8 @@ const Navigator = () => {
   const handleLogout = async navigation => {
     try {
       await AsyncStorage.removeItem('isLoggedIn');
+      await AsyncStorage.removeItem('Username');
+      await AsyncStorage.removeItem('Name');
       const checkLogin = async () => {
         let isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
         isLoggedIn == 'true' ? setisloggedin('true') : setisloggedin('false');

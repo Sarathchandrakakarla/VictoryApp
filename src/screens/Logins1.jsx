@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import { widthPercentageToDP as wp,heightPercentageToDP as hp } from 'react-native-responsive-screen';
 const Logins = () => {
   const navigation = useNavigation();
   let logins = [
@@ -37,7 +36,7 @@ const Logins = () => {
     },
   ];
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       {logins.map(login => {
         return (
           <ImageBackground source={require("../assets/1.jpg")} imageStyle={{borderRadius:20}} style={styles.login} key={login.id}>
@@ -45,21 +44,21 @@ const Logins = () => {
               style={{
                 color: '#fff',
                 marginVertical: 10,
-                fontSize: wp("5"),
-                fontFamily:"RobotoSlab-Bold",
+                fontWeight: 'bold',
+                fontSize: 20,
               }}>
               {login.Title}
             </Text>
-            <Text style={{color: '#fff', marginVertical: 10,textAlign:"justify",fontFamily:"RobotoSlab_Regular",fontSize:wp("3.3")}}>
+            <Text style={{color: '#fff', marginVertical: 10}}>
               {login.Content}
             </Text>
             <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate(login.url)}>
-              <Text style={{color: '#000',fontFamily:"RobotoSlab_Regular"}}>{login.Title}</Text>
+              <Text style={{color: '#000'}}>{login.Title}</Text>
             </TouchableOpacity>
           </ImageBackground>
         );
       })}
-    </ScrollView>
+    </View>
   );
 };
 
@@ -70,18 +69,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:"#E6E6FA"
   },
+  logo: {
+    width: 420,
+    height: 180,
+  },
+  h2: {
+    fontSize: 30,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: '#000',
+  },
   login: {
-    height: hp("28"),
+    height: 220,
     borderColor: '#000',
-    marginVertical: 10,
+    marginVertical: 20,
     alignItems: 'center',
     margin:40,
-    padding:10,
     resizeMode:"contain",
   },
   button: {
     backgroundColor: '#fff',
-    width: wp("50"),
+    width: 150,
     padding: 10,
     marginTop: 0,
     borderRadius: 50,

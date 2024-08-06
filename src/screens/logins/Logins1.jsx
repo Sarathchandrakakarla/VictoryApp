@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { widthPercentageToDP as wp,heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import axios from 'axios';
 
 function Login(username, password, navigateFun, url, setusername) {
@@ -71,13 +70,10 @@ function Login(username, password, navigateFun, url, setusername) {
         },
       )
       .then(async res => {
-        console.log(res.data)
         if (res.data.success) {
           await AsyncStorage.setItem('isLoggedIn', 'true');
-          await AsyncStorage.setItem('Username', username);
-          await AsyncStorage.setItem('Name', res.data.data.Name);
           navigateFun();
-          ToastAndroid.show('Login Successful', ToastAndroid.SHORT);
+          ToastAndroid.show('Login Successful', ToastAndroid.LONG);
         } else {
           ToastAndroid.show(res.data.message, ToastAndroid.LONG);
         }
@@ -203,16 +199,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   h2: {
-    fontSize: wp("6"),
+    fontSize: 30,
     textAlign: 'center',
+    fontWeight: 'bold',
     color: '#000',
-    marginTop: hp("20"),
-    fontFamily:"RobotoSlab-Bold",
-    letterSpacing:2
+    marginTop: 10,
   },
   input: {
-    width: wp("75"),
-    height: hp("5"),
+    width: 300,
+    height: 40,
     margin: 12,
     borderWidth: 2,
     padding: 10,
@@ -220,12 +215,12 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   loginContainer: {
-    marginTop: 50,
+    marginTop: 100,
     alignItems: 'center',
   },
   button: {
     backgroundColor: '#000',
-    width: wp("40"),
+    width: 150,
     padding: 10,
     marginTop: 10,
     borderRadius: 50,

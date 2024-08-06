@@ -8,13 +8,23 @@ import {
 } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StudentDetails from './Student/StudentDetails';
+import SearchStudent from './Student/SearchStudent';
 import Dashboard from './Dashboard';
+import StudentAttendance from './Student/StudentAttendance';
+import DateWiseAttendance from './Student/DateWiseAttendance';
+import ResetPassword from './ResetPassword';
+import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 function DrawerNav(p) {
   return (
     <Drawer.Navigator
       useLegacyImplementation={false}
+      screenOptions={{
+        drawerStyle:{
+          width:wp("70")
+        }
+      }}
       drawerContent={props => {
         return (
           <DrawerContentScrollView {...props}>
@@ -43,7 +53,36 @@ function DrawerNav(p) {
       <Drawer.Screen
         name="StudentDetails"
         component={StudentDetails}
-        options={{headerTitle: 'Student Details',title:"Student Details"}}
+        options={{headerTitle: 'Student Details', title: 'Student Details'}}
+      />
+      <Drawer.Screen
+        name="SearchStudent"
+        component={SearchStudent}
+        options={{headerTitle: 'Search Student', title: 'Search Student'}}
+      />
+      <Drawer.Screen
+        name="Attendance"
+        component={StudentAttendance}
+        options={{
+          headerTitle: 'Student Attendance',
+          title: 'Student Attendance',
+        }}
+      />
+      <Drawer.Screen
+        name="Date_Wise_Attendance"
+        component={DateWiseAttendance}
+        options={{
+          headerTitle: 'Date Wise Attendance View',
+          title: 'Date Wise Attendance View',
+        }}
+      />
+      <Drawer.Screen
+        name="Reset_Password"
+        component={ResetPassword}
+        options={{
+          headerTitle: 'Reset Password',
+          title: 'Reset Password',
+        }}
       />
     </Drawer.Navigator>
   );
