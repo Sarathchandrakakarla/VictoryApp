@@ -8,10 +8,13 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { widthPercentageToDP as wp,heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 import axios from 'axios';
 
-function Login(username, password, navigateFun, url, setusername) {
+function Login(username, password, navigateFun, url, setusername, usertype) {
   if (username == '' || password == '') {
     ToastAndroid.show('Please Fill All The Details!', ToastAndroid.SHORT);
   } else {
@@ -71,11 +74,11 @@ function Login(username, password, navigateFun, url, setusername) {
         },
       )
       .then(async res => {
-        console.log(res.data)
         if (res.data.success) {
           await AsyncStorage.setItem('isLoggedIn', 'true');
           await AsyncStorage.setItem('Username', username);
           await AsyncStorage.setItem('Name', res.data.data.Name);
+          await AsyncStorage.setItem('UserType', usertype);
           navigateFun();
           ToastAndroid.show('Login Successful', ToastAndroid.SHORT);
         } else {
@@ -119,6 +122,7 @@ export const AdminLogin = props => {
               props.onNavigate,
               'admin_login',
               SetUsername,
+              'Admin',
             )
           }>
           <Text style={{color: '#fff'}}>Login</Text>
@@ -153,7 +157,14 @@ export const StudentLogin = props => {
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
-            Login(Username, Password, props.onNavigate, 'student_login')
+            Login(
+              Username,
+              Password,
+              props.onNavigate,
+              'student_login',
+              SetUsername,
+              'Student',
+            )
           }>
           <Text style={{color: '#fff'}}>Login</Text>
         </TouchableOpacity>
@@ -187,7 +198,14 @@ export const FacultyLogin = props => {
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
-            Login(Username, Password, props.onNavigate, 'faculty_login')
+            Login(
+              Username,
+              Password,
+              props.onNavigate,
+              'faculty_login',
+              SetUsername,
+              'Faculty',
+            )
           }>
           <Text style={{color: '#fff'}}>Login</Text>
         </TouchableOpacity>
@@ -203,16 +221,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   h2: {
-    fontSize: wp("6"),
+    fontSize: wp('6'),
     textAlign: 'center',
     color: '#000',
-    marginTop: hp("20"),
-    fontFamily:"RobotoSlab-Bold",
-    letterSpacing:2
+    marginTop: hp('20'),
+    fontFamily: 'RobotoSlab-Bold',
+    letterSpacing: 2,
   },
   input: {
-    width: wp("75"),
-    height: hp("5"),
+    width: wp('75'),
+    height: hp('5'),
     margin: 12,
     borderWidth: 2,
     padding: 10,
@@ -225,7 +243,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#000',
-    width: wp("40"),
+    width: wp('40'),
     padding: 10,
     marginTop: 10,
     borderRadius: 50,

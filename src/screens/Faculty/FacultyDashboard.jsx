@@ -97,7 +97,7 @@ function DrawerNav(p) {
   );
 }
 
-function AdminDashboard({onLogout}) {
+function FacultyDashboard({onLogout}) {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
@@ -109,4 +109,4 @@ function AdminDashboard({onLogout}) {
   );
 }
 
-export default AdminDashboard;
+export default FacultyDashboard;

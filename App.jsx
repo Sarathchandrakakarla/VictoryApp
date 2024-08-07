@@ -15,6 +15,7 @@ import {
   FacultyLogin,
 } from './src/screens/logins/Logins';
 import AdminDashboard from './src/screens/Admin/AdminDashboard';
+import FacultyDashboard from './src/screens/Faculty/FacultyDashboard';
 function MainPage() {
   return (
     <Tab.Navigator
@@ -77,10 +78,13 @@ function MainPage() {
 
 const Navigator = () => {
   let [isloggedin, setisloggedin] = useState('false');
+  let [usertype, setUserType] = useState(null);
   useEffect(() => {
     const checkLogin = async () => {
       let isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
       isLoggedIn == 'true' ? setisloggedin('true') : '';
+      let UserType = await AsyncStorage.getItem('UserType');
+      setUserType(UserType);
     };
 
     checkLogin();
@@ -90,14 +94,17 @@ const Navigator = () => {
       await AsyncStorage.removeItem('isLoggedIn');
       await AsyncStorage.removeItem('Username');
       await AsyncStorage.removeItem('Name');
-      const checkLogin = async () => {
+      await AsyncStorage.removeItem('UserType');
+      setisloggedin('false');
+      setUserType(null);
+
+      navigation.navigate('MainPage');
+      /* const checkLogin = async () => {
         let isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
         isLoggedIn == 'true' ? setisloggedin('true') : setisloggedin('false');
-      };
-
-      checkLogin().then(() => {
-        navigation.navigate('MainPage');
-      });
+      }; */
+      /* checkLogin().then(() => {
+      }); */
     } catch (err) {
       console.log(err);
     }
@@ -107,24 +114,54 @@ const Navigator = () => {
     const checkLogin = async () => {
       let isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
       isLoggedIn == 'true' ? setisloggedin('true') : setisloggedin('false');
+      let UserType = await AsyncStorage.getItem('UserType');
+      setUserType(UserType);
     };
 
     checkLogin().then(() => {
-      navigation.replace('AdminDashboard');
+      navigation.replace(page);
     });
   };
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {isloggedin == 'true' ? (
-          <Stack.Screen name="AdminDashboard" options={{headerShown: false}}>
-            {props => (
-              <AdminDashboard
-                {...props}
-                onLogout={() => handleLogout(props.navigation)}
-              />
-            )}
-          </Stack.Screen>
+        {isloggedin == 'true' && usertype ? (
+          usertype == 'Admin' ? (
+            <Stack.Screen name="AdminDashboard" options={{headerShown: false}}>
+              {props => (
+                <AdminDashboard
+                  {...props}
+                  onLogout={() => handleLogout(props.navigation)}
+                />
+              )}
+            </Stack.Screen>
+          ) : usertype == 'Faculty' ? (
+            <Stack.Screen
+              name="FacultyDashboard"
+              options={{headerShown: false}}>
+              {props => (
+                <FacultyDashboard
+                  {...props}
+                  onLogout={() => handleLogout(props.navigation)}
+                />
+              )}
+            </Stack.Screen>
+          ) : usertype == 'Student' ? (
+            <Stack.Screen name="AdminDashboard" options={{headerShown: false}}>
+              {props => (
+                <AdminDashboard
+                  {...props}
+                  onLogout={() => handleLogout(props.navigation)}
+                />
+              )}
+            </Stack.Screen>
+          ) : (
+            <Stack.Screen
+              name="MainPage"
+              component={MainPage}
+              options={{headerShown: false}}
+            />
+          )
         ) : (
           <Stack.Screen
             name="MainPage"
@@ -145,15 +182,29 @@ const Navigator = () => {
           )}
         </Stack.Screen>
         <Stack.Screen
-          name="StudentLogin"
-          component={StudentLogin}
-          options={{headerShown: true, headerTitle: ''}}
-        />
-        <Stack.Screen
           name="FacultyLogin"
-          component={FacultyLogin}
-          options={{headerShown: true, headerTitle: ''}}
-        />
+          options={{headerShown: true, headerTitle: ''}}>
+          {props => (
+            <FacultyLogin
+              {...props}
+              onNavigate={() =>
+                handleNavigate(props.navigation, 'FacultyDashboard')
+              }
+            />
+          )}
+        </Stack.Screen>
+        <Stack.Screen
+          name="StudentLogin"
+          options={{headerShown: true, headerTitle: ''}}>
+          {props => (
+            <StudentLogin
+              {...props}
+              onNavigate={() =>
+                handleNavigate(props.navigation, 'StudentDashboard')
+              }
+            />
+          )}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
