@@ -16,7 +16,32 @@ import {
 } from './src/screens/logins/Logins';
 import AdminDashboard from './src/screens/Admin/AdminDashboard';
 import FacultyDashboard from './src/screens/Faculty/FacultyDashboard';
+import {Alert} from 'react-native';
+import messaging from '@react-native-firebase/messaging';
+import {PermissionsAndroid} from 'react-native';
 function MainPage() {
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert(remoteMessage['notification']['title'], remoteMessage['notification']['body']);
+    });
+
+    return unsubscribe;
+  }, []);
+  useEffect(() => {
+    async function tokengen() {
+      await messaging().registerDeviceForRemoteMessages();
+      const token = await messaging().getToken();
+      console.log(token);
+      /* console.log(
+        PermissionsAndroid.check(
+          PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+        ).then(val => {
+          console.log(val);
+        }),
+      ); */
+    }
+    tokengen();
+  }, []);
   return (
     <Tab.Navigator
       screenOptions={{
