@@ -31,14 +31,7 @@ function MainPage() {
     async function tokengen() {
       await messaging().registerDeviceForRemoteMessages();
       const token = await messaging().getToken();
-      console.log(token);
-      /* console.log(
-        PermissionsAndroid.check(
-          PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
-        ).then(val => {
-          console.log(val);
-        }),
-      ); */
+      //console.log(token);
     }
     tokengen();
   }, []);
