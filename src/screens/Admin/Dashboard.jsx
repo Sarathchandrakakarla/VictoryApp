@@ -12,6 +12,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import messaging from '@react-native-firebase/messaging';
 import axios from 'axios';
 const Dashboard = () => {
   const [username, setUsername] = useState('');
@@ -22,16 +23,22 @@ const Dashboard = () => {
     await AsyncStorage.getItem('Name').then(name => [setName(name)]);
   }
   useEffect(() => {
+    messaging()
+      .subscribeToTopic('Admin')
+      .then(() => {});
+  },[]);
+  useEffect(() => {
     getUsername();
   });
   useEffect(() => {
     axios
-      .get('https://api.quotable.io/quotes/random?limit=1&maxLength=120')
+      .get('https://api.quotable.io/quotes/random?limit=1&maxLength=120', {
+        timeout: 30000,
+      })
       .then(response => {
-        setQuote([response.data[0].content,response.data[0].author]);
+        setQuote([response.data[0].content, response.data[0].author]);
       })
       .catch(err => {
-
         console.log(err);
       });
   }, []);
@@ -49,7 +56,7 @@ const Dashboard = () => {
           }}
           imageStyle={{borderRadius: 50}}
           style={styles.div2}></ImageBackground>
-        <View>
+        <View style={{width: wp('70')}}>
           <Text style={styles.title}>Welcome, {'\n' + name}</Text>
         </View>
       </View>
@@ -109,19 +116,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     left: wp('5'),
     top: 50,
-    padding:20,
-    alignItems:"center",
+    padding: 20,
+    alignItems: 'center',
   },
-  quote_text:{
-    color:"#000",
-    fontSize:wp("4"),
+  quote_text: {
+    color: '#000',
+    fontSize: wp('4'),
     fontFamily: 'RobotoSlab_Regular',
   },
-  author_text:{
-    color:"#000",
-    fontSize:wp("4"),
+  author_text: {
+    color: '#000',
+    fontSize: wp('4'),
     fontFamily: 'RobotoSlab_Regular',
-    top:20,
-    left:50
-  }
+    top: 20,
+    left: 50,
+  },
 });

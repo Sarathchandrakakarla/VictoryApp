@@ -2,7 +2,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   SafeAreaView,
   ImageBackground,
 } from 'react-native';
@@ -25,11 +24,37 @@ const Dashboard = () => {
 
   useEffect(() => {
     messaging()
-      .subscribeToTopic('Faculty')
+      .subscribeToTopic('Student')
       .then(() => {});
   });
   useEffect(() => {
-    getUsername();
+    getUsername()
+      .then(() => {
+        if (username && username != '') {
+          axios
+            .post(
+              'http://18.61.98.208:3000/student/getclass',
+              {
+                Id_No: username,
+              },
+              {
+                timeout: 30000,
+              },
+            )
+            .then(res => {
+              messaging()
+                .subscribeToTopic(res.data.Class.replace(' ', '_'))
+                .then(() => {
+                });
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
   useEffect(() => {
     axios
@@ -37,7 +62,7 @@ const Dashboard = () => {
         timeout: 30000,
       })
       .then(response => {
-        setQuote([response.data[0].content,response.data[0].author]);
+        setQuote([response.data[0].content, response.data[0].author]);
       })
       .catch(err => {
         console.log(err);
@@ -53,7 +78,9 @@ const Dashboard = () => {
         <ImageBackground
           source={{
             uri:
-              'https://victoryschools.in/Victory/Images/emp_img/' + username + '.jpg',
+              'https://victoryschools.in/Victory/Images/stu_img/' +
+              username +
+              '.jpg',
           }}
           imageStyle={{borderRadius: 50}}
           style={styles.div2}></ImageBackground>
@@ -117,19 +144,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     left: wp('5'),
     top: 50,
-    padding:20,
-    alignItems:"center",
+    padding: 20,
+    alignItems: 'center',
   },
-  quote_text:{
-    color:"#000",
-    fontSize:wp("4"),
+  quote_text: {
+    color: '#000',
+    fontSize: wp('4'),
     fontFamily: 'RobotoSlab_Regular',
   },
-  author_text:{
-    color:"#000",
-    fontSize:wp("4"),
+  author_text: {
+    color: '#000',
+    fontSize: wp('4'),
     fontFamily: 'RobotoSlab_Regular',
-    top:20,
-    left:50
-  }
+    top: 20,
+    left: 50,
+  },
 });

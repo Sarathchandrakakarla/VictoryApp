@@ -77,10 +77,18 @@ const About = () => {
             <Text style={styles.card_text}>Correspondent</Text>
           </View>
         </View>
-        <Text style={{color: '#000', marginTop: 100, lineHeight: 20,fontSize:wp("3.5"),textAlign:"justify",fontFamily:"RobotoSlab_Regular",}}>
+        <Text
+          style={{
+            color: '#000',
+            marginTop: 100,
+            lineHeight: 20,
+            fontSize: wp('3.5'),
+            textAlign: 'justify',
+            fontFamily: 'RobotoSlab_Regular',
+          }}>
           Victory High School is proudly guided by the visionary leadership of
           Principal{'\n'}
-          <Text style={{fontStyle: 'italic'}}>K. Ramakrishna Reddy  </Text>and
+          <Text style={{fontStyle: 'italic'}}>K. Ramakrishna Reddy </Text>and
           Correspondent{'\n'}
           <Text style={{fontStyle: 'italic'}}>A. Narasimha Reddy. </Text>
           With their unwavering commitment to education, they ensure that our
@@ -98,39 +106,60 @@ const About = () => {
         <Text style={styles.subtitle}>Our SSC Results</Text>
         <View style={{paddingLeft: 10, marginTop: 20}}>
           {ssc.map((y, ind) => (
-            <View>
+            <View key={Math.random()}>
               <Text key={ind} style={styles.list_item}>
                 🏆 SSC {y.year}
                 {'\n'}
-                <Text style={{color: '#000'}}>
+                <Text key={Math.random()} style={{color: '#000'}}>
                   {'             '}
                   10.0 GPA - {y.results['10']} students
                 </Text>
                 {'\n'}
-                <Text style={{color: '#000'}}>
+                <Text key={Math.random()} style={{color: '#000'}}>
                   {'             '}
                   9.8 GPA - {y.results['9.8']} students
                 </Text>
                 {'\n'}
-                <Text style={{color: '#000'}}>
+                <Text key={Math.random()} style={{color: '#000'}}>
                   {'             '}
                   9.7 GPA - {y.results['9.7']} students
                 </Text>
               </Text>
             </View>
           ))}
-          <Text style={{color: '#000', fontSize: wp("3.5"), marginTop: 10,fontFamily:"RobotoSlab_Regular",textAlign:"justify"}}>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: wp('3.5'),
+              marginTop: 10,
+              fontFamily: 'RobotoSlab_Regular',
+              textAlign: 'justify',
+            }}>
             A great achievement our school got is: {'\n'}In SSC 2014, SSC 2015,
             SSC 2016 our students received PRATIBHA PURASKAR by Honourable Chief
             minister.
           </Text>
-          <Text style={{color: '#000', fontSize: wp("3.5"), marginTop: 10,fontFamily:"RobotoSlab_Regular",textAlign:"justify"}}>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: wp('3.5'),
+              marginTop: 10,
+              fontFamily: 'RobotoSlab_Regular',
+              textAlign: 'justify',
+            }}>
             Our Students have been getting admissions into the most prestigious
             institution in AP, the IIIT (triple IT) every year since its
             establishment.
           </Text>
           <Text style={styles.subtitle}>Our Co-Curricular Activities</Text>
-          <Text style={{color: '#000', fontSize: wp("3.5"), marginTop: 10,fontFamily:"RobotoSlab_Regular",textAlign:"justify"}}>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: wp('3.5'),
+              marginTop: 10,
+              fontFamily: 'RobotoSlab_Regular',
+              textAlign: 'justify',
+            }}>
             Besides the curricular activities we give much importance to all
             co-curricular and extra-curricular activities like Sports and games,
             dance social activities and cultural activities. We try to instill
@@ -141,8 +170,8 @@ const About = () => {
           <Image
             source={require('../assets/event1.jpg')}
             style={{
-              width: wp("90"),
-              height: hp("23"),
+              width: wp('85'),
+              height: hp('23'),
               borderRadius: 20,
               resizeMode: 'cover',
               marginTop: 10,
@@ -151,8 +180,8 @@ const About = () => {
           <Image
             source={require('../assets/event2.jpg')}
             style={{
-              width: wp("90"),
-              height: hp("23"),
+              width: wp('85'),
+              height: hp('23'),
               borderRadius: 20,
               resizeMode: 'cover',
               marginTop: 10,
@@ -171,14 +200,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#000',
     position: 'absolute',
-    height: hp("100"),
+    height: hp('100'),
   },
   div1: {
-    height: hp("25"),
+    height: hp('25'),
     opacity: 0.6,
   },
   div2: {
-    width: wp("100"),
+    width: wp('100'),
     padding: 20,
     paddingBottom: 0,
     borderTopLeftRadius: 40,
@@ -187,36 +216,36 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     position: 'relative',
     marginTop: -50,
-    marginBottom:50
+    marginBottom: 50,
   },
   subtitle: {
     textAlign: 'center',
     color: '#000',
-    fontSize: wp("5"),
+    fontSize: wp('5'),
     marginTop: 10,
-    fontFamily:"RobotoSlab-Bold",
+    fontFamily: 'RobotoSlab-Bold',
   },
   card: {
-    width: wp("40"),
-    height: hp("20"),
+    width: wp('40'),
+    height: hp('20'),
   },
   card_img: {
-    width: wp("40"),
-    height: hp("20"),
+    width: wp('40'),
+    height: hp('20'),
     resizeMode: 'cover',
     borderRadius: 20,
   },
   card_text: {
     color: '#000',
     textAlign: 'center',
-    fontSize: wp("3.3"),
+    fontSize: wp('3.3'),
     marginTop: 15,
     marginLeft: -15,
-    fontFamily:"RobotoSlab_Regular",
+    fontFamily: 'RobotoSlab_Regular',
   },
   list_item: {
     color: '#000',
-    fontSize: wp("3.5"),
-    fontFamily:"RobotoSlab_Regular",
+    fontSize: wp('3.5'),
+    fontFamily: 'RobotoSlab_Regular',
   },
 });

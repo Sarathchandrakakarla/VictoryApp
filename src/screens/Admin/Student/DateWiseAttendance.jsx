@@ -317,31 +317,31 @@ const DateWiseAttendanceView = () => {
                   return Object.entries(cls[1]).map(([sec, students]) => {
                     return students.map(student => {
                       return (
-                        <DataTable.Row>
-                          <DataTable.Cell style={{width: wp('10')}}>
+                        <DataTable.Row key={Math.random() * 1000}>
+                          <DataTable.Cell key={Math.random() * 1000} style={{width: wp('10')}}>
                             {s_no++}
                           </DataTable.Cell>
-                          <DataTable.Cell style={{width: wp('30')}}>
+                          <DataTable.Cell key={Math.random() * 1000} style={{width: wp('30')}}>
                             {student['Id_No']}
                           </DataTable.Cell>
-                          <DataTable.Cell style={{width: wp('70')}}>
+                          <DataTable.Cell key={Math.random() * 1000} style={{width: wp('70')}}>
                             {student['Name']}
                           </DataTable.Cell>
                           {(Class && !Section) || (!Class && !Section) ? (
-                            <DataTable.Cell style={{width: wp('30')}}>
+                            <DataTable.Cell key={Math.random() * 1000} style={{width: wp('30')}}>
                               {student['Class'] + ' ' + student['Section']}
                             </DataTable.Cell>
                           ) : (
                             <></>
                           )}
                           {absentType == 'Both' ? (
-                            <DataTable.Cell style={{width: wp('25')}}>
+                            <DataTable.Cell key={Math.random() * 1000} style={{width: wp('25')}}>
                               {student['Type'] == 'A' ? 'Absent' : 'Leave'}
                             </DataTable.Cell>
                           ) : (
                             <></>
                           )}
-                          <DataTable.Cell style={{width: wp('50')}}>
+                          <DataTable.Cell key={Math.random() * 1000} style={{width: wp('50')}}>
                             {student['Mobile']}
                           </DataTable.Cell>
                         </DataTable.Row>

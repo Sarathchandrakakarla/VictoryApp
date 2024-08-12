@@ -50,7 +50,7 @@ const ResetPassword = () => {
     }
     axios
       .post(
-        'http://18.61.98.208:3000/faculty/resetpassword',
+        'http://18.61.98.208:3000/student/resetpassword',
         {
           Username: username,
           OldPassword: oldpass,

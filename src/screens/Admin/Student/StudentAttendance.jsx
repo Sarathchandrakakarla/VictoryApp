@@ -339,7 +339,7 @@ const StudentAttendance = () => {
                 </DataTable.Header>
                 {details.map((col, index) => {
                   return (
-                    <DataTable.Row>
+                    <DataTable.Row key={Math.random() * 1000}>
                       <DataTable.Cell
                         key={Math.random() * 1000}
                         style={{width: wp('10')}}>

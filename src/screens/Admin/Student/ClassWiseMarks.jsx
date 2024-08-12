@@ -364,20 +364,26 @@ const ClassWiseMarks = () => {
                 {details.map(student_details => {
                   return Object.entries(student_details[1]).map(student => {
                     return (
-                      <DataTable.Row>
-                        <DataTable.Cell style={{width: wp('10')}}>
+                      <DataTable.Row key={Math.random() * 1000}>
+                        <DataTable.Cell
+                          key={Math.random() * 1000}
+                          style={{width: wp('10')}}>
                           {s_no++}
                         </DataTable.Cell>
-                        <DataTable.Cell style={{width: wp('25')}}>
+                        <DataTable.Cell
+                          key={Math.random() * 1000}
+                          style={{width: wp('25')}}>
                           {student[0]}
                         </DataTable.Cell>
                         <DataTable.Cell
+                          key={Math.random() * 1000}
                           style={{width: wp('60')}}
                           textStyle={{marginLeft: 30}}>
                           {student[1].Name}
                         </DataTable.Cell>
                         {Class && !Section ? (
                           <DataTable.Cell
+                            key={Math.random() * 1000}
                             style={{width: wp('25')}}
                             textStyle={{fontWeight: 'bold'}}>
                             {student[1].Class}
@@ -387,32 +393,46 @@ const ClassWiseMarks = () => {
                         )}
                         {Subjects.map(subject => {
                           return (
-                            <DataTable.Cell style={{width: wp('25')}} numeric>
+                            <DataTable.Cell
+                              key={Math.random() * 1000}
+                              style={{width: wp('25')}}
+                              numeric>
                               {student[1]['Subjects'][subject]}
                             </DataTable.Cell>
                           );
                         })}
-                        <DataTable.Cell style={{width: wp('30')}} numeric>
+                        <DataTable.Cell
+                          key={Math.random() * 1000}
+                          style={{width: wp('30')}}
+                          numeric>
                           {student[1].Total + '/' + Max_Sum}
                         </DataTable.Cell>
                         {markstype == 'Normal' ? (
                           <>
-                            <DataTable.Cell style={{width: wp('30')}} numeric>
+                            <DataTable.Cell
+                              key={Math.random() * 1000}
+                              style={{width: wp('30')}}
+                              numeric>
                               {student[1].Percentage}
                             </DataTable.Cell>
                           </>
                         ) : (
                           <>
-                            <DataTable.Cell style={{width: wp('30')}} numeric>
+                            <DataTable.Cell
+                              key={Math.random() * 1000}
+                              style={{width: wp('30')}}
+                              numeric>
                               {student[1].GPA}
                             </DataTable.Cell>
                           </>
                         )}
                         <DataTable.Cell
+                          key={Math.random() * 1000}
                           style={{width: wp('28'), marginLeft: wp('15')}}>
                           {student[1].Grade}
                         </DataTable.Cell>
                         <DataTable.Cell
+                          key={Math.random() * 1000}
                           style={{width: wp('20'), marginLeft: wp('10')}}>
                           {student[1].Rank}
                         </DataTable.Cell>

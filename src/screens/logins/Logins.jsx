@@ -14,7 +14,7 @@ import {
 } from 'react-native-responsive-screen';
 import axios from 'axios';
 
-function Login(username, password, navigateFun, url, setusername, usertype) {
+function Login(username, password, navigateFun, url, usertype) {
   if (username == '' || password == '') {
     ToastAndroid.show('Please Fill All The Details!', ToastAndroid.SHORT);
   } else {
@@ -121,7 +121,6 @@ export const AdminLogin = props => {
               Password,
               props.onNavigate,
               'admin_login',
-              SetUsername,
               'Admin',
             )
           }>
@@ -162,7 +161,6 @@ export const StudentLogin = props => {
               Password,
               props.onNavigate,
               'student_login',
-              SetUsername,
               'Student',
             )
           }>
@@ -203,7 +201,6 @@ export const FacultyLogin = props => {
               Password,
               props.onNavigate,
               'faculty_login',
-              SetUsername,
               'Faculty',
             )
           }>
@@ -230,7 +227,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: wp('75'),
-    height: hp('5'),
+    height: hp('6'),
     margin: 12,
     borderWidth: 2,
     padding: 10,

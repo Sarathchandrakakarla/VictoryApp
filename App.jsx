@@ -16,16 +16,15 @@ import {
 } from './src/screens/logins/Logins';
 import AdminDashboard from './src/screens/Admin/AdminDashboard';
 import FacultyDashboard from './src/screens/Faculty/FacultyDashboard';
+import StudentDashboard from './src/screens/Student/StudentDashboard';
 import {Alert} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import {PermissionsAndroid} from 'react-native';
 function MainPage() {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert(remoteMessage['notification']['title'], remoteMessage['notification']['body']);
+      Alert.alert(remoteMessage['notification']['title'],remoteMessage['notification']['body']);
     });
-
-    return unsubscribe;
   }, []);
   useEffect(() => {
     async function tokengen() {
@@ -165,9 +164,11 @@ const Navigator = () => {
               )}
             </Stack.Screen>
           ) : usertype == 'Student' ? (
-            <Stack.Screen name="AdminDashboard" options={{headerShown: false}}>
+            <Stack.Screen
+              name="StudentDashboard"
+              options={{headerShown: false}}>
               {props => (
-                <AdminDashboard
+                <StudentDashboard
                   {...props}
                   onLogout={() => handleLogout(props.navigation)}
                 />

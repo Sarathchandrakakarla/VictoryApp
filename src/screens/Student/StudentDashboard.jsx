@@ -7,14 +7,9 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import StudentDetails from './Student/StudentDetails';
-import SearchStudent from './Student/SearchStudent';
 import Dashboard from './Dashboard';
-import StudentAttendance from './Student/StudentAttendance';
-import DateWiseAttendance from './Student/DateWiseAttendance';
-import ClassWiseMarks from './Student/ClassWiseMarks';
-import IndividualMarks from './Student/IndividualMarks';
-import ManageNotifications from './ManageNotifications';
+import Profile from './Profile';
+import Marks from './Marks';
 import ResetPassword from './ResetPassword';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 const Stack = createNativeStackNavigator();
@@ -54,53 +49,19 @@ function DrawerNav(p) {
         }}
       />
       <Drawer.Screen
-        name="StudentDetails"
-        component={StudentDetails}
-        options={{headerTitle: 'Student Details', title: 'Student Details'}}
-      />
-      <Drawer.Screen
-        name="SearchStudent"
-        component={SearchStudent}
-        options={{headerTitle: 'Search Student', title: 'Search Student'}}
-      />
-      <Drawer.Screen
-        name="Attendance"
-        component={StudentAttendance}
+        name="Profile"
+        component={Profile}
         options={{
-          headerTitle: 'Student Attendance',
-          title: 'Student Attendance',
+          headerTitle: 'My Profile',
+          title: 'My Profile',
         }}
       />
       <Drawer.Screen
-        name="Date_Wise_Attendance"
-        component={DateWiseAttendance}
+        name="Marks"
+        component={Marks}
         options={{
-          headerTitle: 'Date Wise Attendance View',
-          title: 'Date Wise Attendance View',
-        }}
-      />
-      <Drawer.Screen
-        name="Class_Wise_Marks"
-        component={ClassWiseMarks}
-        options={{
-          headerTitle: 'Class Wise Marks View',
-          title: 'Class Wise Marks View',
-        }}
-      />
-      <Drawer.Screen
-        name="Individual_Marks"
-        component={IndividualMarks}
-        options={{
-          headerTitle: 'Individual Marks View',
-          title: 'Individual Marks View',
-        }}
-      />
-      <Drawer.Screen
-        name="Manage_Notifications"
-        component={ManageNotifications}
-        options={{
-          headerTitle: 'Manage Notifications',
-          title: 'Manage Notifications',
+          headerTitle: 'My Performance',
+          title: 'My Performance',
         }}
       />
       <Drawer.Screen
@@ -115,7 +76,7 @@ function DrawerNav(p) {
   );
 }
 
-function AdminDashboard({onLogout}) {
+function StudentDashboard({onLogout}) {
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator>
@@ -127,4 +88,4 @@ function AdminDashboard({onLogout}) {
   );
 }
 
-export default AdminDashboard;
+export default StudentDashboard;

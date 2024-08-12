@@ -13,6 +13,7 @@ import Dashboard from './Dashboard';
 import StudentAttendance from './Student/StudentAttendance';
 import DateWiseAttendance from './Student/DateWiseAttendance';
 import ClassWiseMarks from './Student/ClassWiseMarks';
+import IndividualMarks from './Student/IndividualMarks';
 import ResetPassword from './ResetPassword';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 const Stack = createNativeStackNavigator();
@@ -83,6 +84,14 @@ function DrawerNav(p) {
         options={{
           headerTitle: 'Class Wise Marks View',
           title: 'Class Wise Marks View',
+        }}
+      />
+      <Drawer.Screen
+        name="Individual_Marks"
+        component={IndividualMarks}
+        options={{
+          headerTitle: 'Individual Marks View',
+          title: 'Individual Marks View',
         }}
       />
       <Drawer.Screen

@@ -11,5 +11,8 @@ PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
 messaging().setBackgroundMessageHandler(async remoteMessage => {
   console.log('Message handled in the background!', remoteMessage);
 });
+messaging()
+  .subscribeToTopic('All')
+  .then(() => {});
 
 AppRegistry.registerComponent(appName, () => App);

@@ -126,8 +126,10 @@ const SearchStudent = () => {
         />
       </View>
       <View style={{alignItems: 'center'}}>
-        <View style={{flexDirection: 'row', gap: wp("5")}}>
-          <TouchableOpacity style={styles.button_show} onPress={() => getDetails()}>
+        <View style={{flexDirection: 'row', gap: wp('5')}}>
+          <TouchableOpacity
+            style={styles.button_show}
+            onPress={() => getDetails()}>
             <Text style={{color: '#fff'}}>View Details</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -147,79 +149,79 @@ const SearchStudent = () => {
             <ScrollView
               horizontal
               contentContainerStyle={{flexDirection: 'column'}}>
-              <DataTable.Header style={{height: hp("6")}}>
+              <DataTable.Header style={{height: hp('6')}}>
                 <DataTable.Cell
-                  style={{width: wp("10")}}
+                  style={{width: wp('10')}}
                   textStyle={{fontWeight: 'bold'}}>
                   S No.
                 </DataTable.Cell>
                 <DataTable.Cell
-                  style={{width: wp("30")}}
+                  style={{width: wp('30')}}
                   textStyle={{fontWeight: 'bold'}}>
                   Id No.
                 </DataTable.Cell>
                 <DataTable.Cell
-                  style={{width: wp("40")}}
+                  style={{width: wp('40')}}
                   textStyle={{fontWeight: 'bold'}}>
                   Student Name
                 </DataTable.Cell>
                 <DataTable.Cell
-                  style={{width: wp("50")}}
+                  style={{width: wp('50')}}
                   textStyle={{fontWeight: 'bold'}}>
                   Surname
                 </DataTable.Cell>
                 <DataTable.Cell
-                  style={{width: wp("60")}}
+                  style={{width: wp('60')}}
                   textStyle={{fontWeight: 'bold'}}>
                   Father Name
                 </DataTable.Cell>
                 <DataTable.Cell
-                  style={{width: wp("30")}}
+                  style={{width: wp('30')}}
                   textStyle={{fontWeight: 'bold'}}>
                   Class
                 </DataTable.Cell>
                 <DataTable.Cell
-                  style={{width: wp("30")}}
+                  style={{width: wp('30')}}
                   textStyle={{fontWeight: 'bold'}}>
                   Mobile Number
                 </DataTable.Cell>
               </DataTable.Header>
               {details.map((col, index) => {
                 return (
-                  <DataTable.Row>
+                  <DataTable.Row key={Math.random() * 1000}>
                     <DataTable.Cell
                       key={Math.random() * 1000}
-                      style={{width: wp("10")}}>
+                      style={{width: wp('10')}}>
                       {index + 1}
                     </DataTable.Cell>
                     <DataTable.Cell
                       key={Math.random() * 1000}
-                      style={{width: wp("30")}}>
+                      style={{width: wp('30')}}>
                       {col['Id_No']}
                     </DataTable.Cell>
                     <DataTable.Cell
                       key={Math.random() * 1000}
-                      style={{width: wp("70")}}>
+                      style={{width: wp('70')}}>
                       {col['First_Name']}
                     </DataTable.Cell>
                     <DataTable.Cell
                       key={Math.random() * 1000}
-                      style={{width: wp("50")}}>
+                      style={{width: wp('50')}}>
                       {col['Sur_Name']}
                     </DataTable.Cell>
                     <DataTable.Cell
                       key={Math.random() * 1000}
-                      style={{width: wp("75")}}>
+                      style={{width: wp('75')}}>
                       {col['Father_Name']}
                     </DataTable.Cell>
                     <DataTable.Cell
                       key={Math.random() * 1000}
-                      style={{width: wp("40")}}>
+                      style={{width: wp('40')}}>
                       {col['Class'] + col['Section']}
                     </DataTable.Cell>
                     <DataTable.Cell
                       key={Math.random() * 1000}
-                      style={{width: wp("50")}}>
+                      style={{width: wp('50')}}>
                       {col['Mobile']}
                     </DataTable.Cell>
                   </DataTable.Row>
@@ -253,7 +255,7 @@ const styles = StyleSheet.create({
   },
   button_show: {
     backgroundColor: '#006F40',
-    width: wp("35"),
+    width: wp('35'),
     padding: 10,
     marginTop: 0,
     borderRadius: 50,
@@ -261,7 +263,7 @@ const styles = StyleSheet.create({
   },
   button_clear: {
     backgroundColor: '#ffa500',
-    width: wp("35"),
+    width: wp('35'),
     padding: 10,
     marginTop: 0,
     borderRadius: 50,

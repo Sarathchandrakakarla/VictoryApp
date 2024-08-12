@@ -53,8 +53,8 @@ const Home = () => {
             We took an initiative to facilitate the digitalized interaction with
             our Victory Schools.
           </Text>
-          <View style={{flexDirection: 'column', gap: 80}}>
-            <View style={{flexDirection: 'row', gap: 50}}>
+          <View style={{flexDirection: 'column', gap: 60}}>
+            <View style={{flexDirection: 'row', gap: 40}}>
               <View style={styles.card}>
                 <Image
                   source={require('../assets/user.png')}
@@ -70,7 +70,7 @@ const Home = () => {
                 <Text style={styles.card_text}>Real-Time Attendance</Text>
               </View>
             </View>
-            <View style={{flexDirection: 'row', gap: 50}}>
+            <View style={{flexDirection: 'row', gap: 40}}>
               <View style={styles.card}>
                 <Image
                   source={require('../assets/performance.png')}
