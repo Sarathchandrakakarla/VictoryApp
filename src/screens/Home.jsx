@@ -53,8 +53,8 @@ const Home = () => {
             We took an initiative to facilitate the digitalized interaction with
             our Victory Schools.
           </Text>
-          <View style={{flexDirection: 'column', gap: 60}}>
-            <View style={{flexDirection: 'row', gap: 40}}>
+          <View style={{flexDirection: 'column', gap: hp("7")}}>
+            <View style={{flexDirection: 'row', gap: wp("10")}}>
               <View style={styles.card}>
                 <Image
                   source={require('../assets/user.png')}
@@ -70,7 +70,7 @@ const Home = () => {
                 <Text style={styles.card_text}>Real-Time Attendance</Text>
               </View>
             </View>
-            <View style={{flexDirection: 'row', gap: 40}}>
+            <View style={{flexDirection: 'row', gap: wp("10")}}>
               <View style={styles.card}>
                 <Image
                   source={require('../assets/performance.png')}
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     fontSize: wp("6"),
     margin: 50,
     marginBottom: 20,
-    marginLeft: 50,
+    marginLeft: wp("10"),
     fontFamily:"NotoSerifDisplay_Condensed-BlackItalic",
     letterSpacing:5
   },
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     color: 'white',
     margin: 50,
     marginTop: 0,
-    marginLeft: 70,
+    marginLeft: wp("16"),
     fontFamily:"NotoSerifDisplay_Condensed-BlackItalic",
     letterSpacing:4,
   },

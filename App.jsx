@@ -19,11 +19,13 @@ import FacultyDashboard from './src/screens/Faculty/FacultyDashboard';
 import StudentDashboard from './src/screens/Student/StudentDashboard';
 import {Alert} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
-import {PermissionsAndroid} from 'react-native';
 function MainPage() {
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert(remoteMessage['notification']['title'],remoteMessage['notification']['body']);
+      Alert.alert(
+        remoteMessage['notification']['title'],
+        remoteMessage['notification']['body'],
+      );
     });
   }, []);
   useEffect(() => {
@@ -108,20 +110,29 @@ const Navigator = () => {
   });
   const handleLogout = async navigation => {
     try {
+      AsyncStorage.getItem('Topics').then(topics => {
+        let topicsArray = JSON.parse(topics);
+        console.log(topicsArray);
+        topicsArray.forEach(topic => {
+          if (topic != 'All') {
+            messaging()
+              .unsubscribeFromTopic(topic)
+              .then(() => {
+                console.log('Unsubscribed from ' + topic);
+              });
+          }
+        });
+      });
+      await AsyncStorage.setItem('Topics', JSON.stringify(['All']));
       await AsyncStorage.removeItem('isLoggedIn');
       await AsyncStorage.removeItem('Username');
       await AsyncStorage.removeItem('Name');
+      await AsyncStorage.removeItem('Role');
       await AsyncStorage.removeItem('UserType');
       setisloggedin('false');
       setUserType(null);
 
       navigation.navigate('MainPage');
-      /* const checkLogin = async () => {
-        let isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
-        isLoggedIn == 'true' ? setisloggedin('true') : setisloggedin('false');
-      }; */
-      /* checkLogin().then(() => {
-      }); */
     } catch (err) {
       console.log(err);
     }

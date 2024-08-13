@@ -78,6 +78,9 @@ function Login(username, password, navigateFun, url, usertype) {
           await AsyncStorage.setItem('isLoggedIn', 'true');
           await AsyncStorage.setItem('Username', username);
           await AsyncStorage.setItem('Name', res.data.data.Name);
+          if (usertype == 'Faculty') {
+            await AsyncStorage.setItem('Role', res.data.data.Role);
+          }
           await AsyncStorage.setItem('UserType', usertype);
           navigateFun();
           ToastAndroid.show('Login Successful', ToastAndroid.SHORT);
@@ -116,13 +119,7 @@ export const AdminLogin = props => {
         <TouchableOpacity
           style={styles.button}
           onPress={() =>
-            Login(
-              Username,
-              Password,
-              props.onNavigate,
-              'admin_login',
-              'Admin',
-            )
+            Login(Username, Password, props.onNavigate, 'admin_login', 'Admin')
           }>
           <Text style={{color: '#fff'}}>Login</Text>
         </TouchableOpacity>

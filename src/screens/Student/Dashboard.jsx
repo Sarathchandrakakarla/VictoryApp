@@ -26,6 +26,11 @@ const Dashboard = () => {
     messaging()
       .subscribeToTopic('Student')
       .then(() => {});
+    AsyncStorage.getItem('Topics').then(topics => {
+      let topicsArray = JSON.parse(topics);
+      if (!topicsArray.includes('Student')) topicsArray.push('Student');
+      AsyncStorage.setItem('Topics', JSON.stringify(topicsArray));
+    });
   });
   useEffect(() => {
     getUsername()
@@ -44,8 +49,12 @@ const Dashboard = () => {
             .then(res => {
               messaging()
                 .subscribeToTopic(res.data.Class.replace(' ', '_'))
-                .then(() => {
-                });
+                .then(() => {});
+              AsyncStorage.getItem('Topics').then(topics => {
+                let topicsArray = JSON.parse(topics);
+                if (!topicsArray.includes(res.data.Class.replace(' ', '_'))) topicsArray.push(res.data.Class.replace(' ', '_'));
+                AsyncStorage.setItem('Topics', JSON.stringify(topicsArray));
+              });
             })
             .catch(err => {
               console.log(err);

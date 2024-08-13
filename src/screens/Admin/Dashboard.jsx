@@ -26,7 +26,12 @@ const Dashboard = () => {
     messaging()
       .subscribeToTopic('Admin')
       .then(() => {});
-  },[]);
+    AsyncStorage.getItem('Topics').then(topics => {
+      let topicsArray = JSON.parse(topics);
+      if (!topicsArray.includes('Admin')) topicsArray.push('Admin');
+      AsyncStorage.setItem('Topics', JSON.stringify(topicsArray));
+    });
+  }, []);
   useEffect(() => {
     getUsername();
   });

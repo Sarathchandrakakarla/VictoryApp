@@ -10,6 +10,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Dashboard from './Dashboard';
 import Profile from './Profile';
 import Marks from './Marks';
+import MyNotifications from './MyNotifications';
 import ResetPassword from './ResetPassword';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 const Stack = createNativeStackNavigator();
@@ -62,6 +63,14 @@ function DrawerNav(p) {
         options={{
           headerTitle: 'My Performance',
           title: 'My Performance',
+        }}
+      />
+      <Drawer.Screen
+        name="My_Notifications"
+        component={MyNotifications}
+        options={{
+          headerTitle: 'My Notifications',
+          title: 'My Notifications',
         }}
       />
       <Drawer.Screen

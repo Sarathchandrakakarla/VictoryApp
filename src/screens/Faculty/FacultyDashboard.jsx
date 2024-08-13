@@ -12,19 +12,30 @@ import SearchStudent from './Student/SearchStudent';
 import Dashboard from './Dashboard';
 import StudentAttendance from './Student/StudentAttendance';
 import DateWiseAttendance from './Student/DateWiseAttendance';
+import VanAttendance from './Student/VanAttendance';
+import DateWiseVanAttendanceView from './Student/DateWiseVanAttendance';
 import ClassWiseMarks from './Student/ClassWiseMarks';
 import IndividualMarks from './Student/IndividualMarks';
+import MyNotifications from './MyNotifications';
 import ResetPassword from './ResetPassword';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 function DrawerNav(p) {
+  const [Role, setRole] = useState();
+  useEffect(() => {
+    AsyncStorage.getItem('Role').then(role => {
+      setRole(role);
+    });
+  });
   return (
     <Drawer.Navigator
       useLegacyImplementation={false}
       screenOptions={{
         drawerStyle: {
-          width: wp('70'),
+          width: wp('80'),
         },
       }}
       drawerContent={props => {
@@ -78,6 +89,28 @@ function DrawerNav(p) {
           title: 'Date Wise Attendance View',
         }}
       />
+      {Role && Role == 'Faculty_Admin' ? (
+        <>
+          <Drawer.Screen
+            name="VanAttendance"
+            component={VanAttendance}
+            options={{
+              headerTitle: 'Student Van Attendance',
+              title: 'Student Van Attendance',
+            }}
+          />
+          <Drawer.Screen
+            name="Date_Wise_Van_Attendance"
+            component={DateWiseVanAttendanceView}
+            options={{
+              headerTitle: 'Date Wise Van Attendance View',
+              title: 'Date Wise Van Attendance View',
+            }}
+          />
+        </>
+      ) : (
+        <></>
+      )}
       <Drawer.Screen
         name="Class_Wise_Marks"
         component={ClassWiseMarks}
@@ -92,6 +125,14 @@ function DrawerNav(p) {
         options={{
           headerTitle: 'Individual Marks View',
           title: 'Individual Marks View',
+        }}
+      />
+      <Drawer.Screen
+        name="My_Notifications"
+        component={MyNotifications}
+        options={{
+          headerTitle: 'My Notifications',
+          title: 'My Notifications',
         }}
       />
       <Drawer.Screen

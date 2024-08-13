@@ -71,11 +71,12 @@ const styles = StyleSheet.create({
     backgroundColor:"#E6E6FA"
   },
   login: {
-    height: hp("28"),
+    height: hp("29"),
     borderColor: '#000',
     marginVertical: 10,
     alignItems: 'center',
     margin:40,
+    marginHorizontal:wp("5"),
     padding:10,
     resizeMode:"contain",
   },
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: wp("50"),
     padding: 10,
-    marginTop: 0,
+    marginTop: hp("1"),
     borderRadius: 50,
     alignItems: 'center',
   },
