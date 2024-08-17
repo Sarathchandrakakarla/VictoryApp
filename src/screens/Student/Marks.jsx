@@ -167,6 +167,26 @@ const Marks = () => {
                   horizontal
                   contentContainerStyle={{flexDirection: 'column'}}>
                   <DataTable.Header style={{height: hp('6')}}>
+                    <DataTable.Cell>
+                      <Text style={{fontFamily: 'RobotoSlab-Bold'}}>
+                        Student Name:
+                      </Text>{' '}
+                      <Text style={{fontFamily: 'RobotoSlab_Regular'}}>
+                        {details.Name}
+                      </Text>
+                    </DataTable.Cell>
+                  </DataTable.Header>
+                  <DataTable.Header style={{height: hp('6')}}>
+                    <DataTable.Cell>
+                      <Text style={{fontFamily: 'RobotoSlab-Bold'}}>
+                        Class:
+                      </Text>{' '}
+                      <Text style={{fontFamily: 'RobotoSlab_Regular'}}>
+                        {details.Class}
+                      </Text>
+                    </DataTable.Cell>
+                  </DataTable.Header>
+                  <DataTable.Header style={{height: hp('6')}}>
                     <DataTable.Cell
                       style={{width: wp('25')}}
                       textStyle={{fontWeight: 'bold'}}>
