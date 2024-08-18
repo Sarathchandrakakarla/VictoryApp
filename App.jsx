@@ -14,12 +14,17 @@ import {
   StudentLogin,
   FacultyLogin,
 } from './src/screens/logins/Logins';
+import Notifications from './src/screens/Notifications';
+import Contact from './src/screens/Contact';
+import Gallery from './src/screens/Gallery';
 import AdminDashboard from './src/screens/Admin/AdminDashboard';
 import FacultyDashboard from './src/screens/Faculty/FacultyDashboard';
 import StudentDashboard from './src/screens/Student/StudentDashboard';
 import {Alert} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
+import {useNavigation} from '@react-navigation/native';
 function MainPage() {
+  const navigation = useNavigation();
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       Alert.alert(
@@ -61,6 +66,7 @@ function MainPage() {
             />
           ),
         }}
+        navigate={navigation}
         component={Home}
       />
       <Tab.Screen
@@ -77,6 +83,19 @@ function MainPage() {
           ),
         }}
         component={About}
+      />
+      <Tab.Screen
+        name="Gallery"
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Ionicons
+              name={focused ? 'images' : 'images-outline'}
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+        component={Gallery}
       />
       <Tab.Screen
         name="Logins"
@@ -199,6 +218,16 @@ const Navigator = () => {
             options={{headerShown: false}}
           />
         )}
+        <Stack.Screen
+          name="Notifications"
+          component={Notifications}
+          options={{headerShown: true}}
+        />
+        <Stack.Screen
+          name="Contact"
+          component={Contact}
+          options={{headerShown: true, headerTitle: 'Contact Us'}}
+        />
         <Stack.Screen
           name="AdminLogin"
           options={{headerShown: true, headerTitle: ''}}>
