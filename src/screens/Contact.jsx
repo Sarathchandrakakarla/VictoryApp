@@ -1,10 +1,18 @@
 import * as React from 'react';
-import {ImageBackground, SafeAreaView, ScrollView, View} from 'react-native';
+import {
+  ImageBackground,
+  SafeAreaView,
+  ScrollView,
+  Touchable,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import call from 'react-native-phone-call';
 const contacts = [
   {
     id: 1,
@@ -12,6 +20,11 @@ const contacts = [
     designation: 'Principal',
     phone: '9440289081',
     img: 'Principal.jpg',
+    args: {
+      number: '+919440289081',
+      prompt: true,
+      skipCanOpen: true,
+    },
   },
   {
     id: 2,
@@ -19,6 +32,11 @@ const contacts = [
     designation: 'Correspondent',
     phone: '9885027156',
     img: 'correspondent.jpg',
+    args: {
+      number: '+919885027156',
+      prompt: true,
+      skipCanOpen: true,
+    },
   },
   {
     id: 3,
@@ -26,6 +44,11 @@ const contacts = [
     designation: 'Head Master',
     phone: '9912652121',
     img: 'hm.jpg',
+    args: {
+      number: '+919912652121',
+      prompt: true,
+      skipCanOpen: true,
+    },
   },
   {
     id: 4,
@@ -33,6 +56,11 @@ const contacts = [
     designation: 'School Office',
     phone: '08566-244584',
     img: 'Victory Logo.png',
+    args: {
+      number: '08566-244584',
+      prompt: true,
+      skipCanOpen: true,
+    },
   },
 ];
 const Contact = () => (
@@ -47,12 +75,21 @@ const Contact = () => (
         }}>
         {contacts.map(contact => (
           <Card key={contact.id}>
-            <Card.Content
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Card.Content>
+            <Card.Content style={{flexDirection: 'row', width: wp('100')}}>
+              <Card.Content style={{width:wp("70")}}>
                 <Text variant="titleLarge">{contact.name}</Text>
                 <Text variant="titleMedium">{contact.designation}</Text>
-                <Text variant="bodyMedium">Phone : {contact.phone}</Text>
+                <TouchableHighlight
+                  onPress={() => {
+                    call(contact.args).catch(err => {
+                      console.log(err);
+                    });
+                  }}
+                  underlayColor="transparent">
+                  <Text variant="bodyMedium" style={{color: 'blue'}}>
+                    Phone : {contact.phone}
+                  </Text>
+                </TouchableHighlight>
               </Card.Content>
               <ImageBackground
                 source={{

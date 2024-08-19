@@ -50,7 +50,7 @@ const Notifications = () => {
         {notifications.length == 0 ? (
           <>
             <View style={styles.alert} key={Math.random()}>
-              <Text style={{color: '#000'}}>
+              <Text style={{color: '#000'}} key={Math.random()}>
                 You don't have any new Notifications!
               </Text>
             </View>
@@ -65,6 +65,7 @@ const Notifications = () => {
                       <DataTable.Row style={styles.row} key={Math.random()}>
                         <DataTable.Cell key={Math.random()}>
                           <Text
+                            key={Math.random()}
                             style={{
                               color: '#000',
                               fontFamily: 'RobotoSlab_Regular',

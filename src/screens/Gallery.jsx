@@ -6,7 +6,7 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Gallery from 'react-native-awesome-gallery';
 import {Card, Text} from 'react-native-paper';
 import {
@@ -14,7 +14,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-const Home = () => {
+import {GestureHandlerRootView, Swipeable} from 'react-native-gesture-handler';
+const Home = props => {
   const images = [];
   for (let i = 1; i <= 21; i++) {
     images.push(
@@ -34,24 +35,26 @@ const Home = () => {
     setGallery(false);
   }
 
+  useEffect(() => {
+    props.navigation.addListener('tabPress', () => {
+      if (gallery) {
+        closeGallery();
+      }
+    });
+  });
+
   return (
     <>
       {gallery ? (
         <>
           <TouchableOpacity style={styles.close} onPress={closeGallery}>
-            <Ionicons
-              name="close"
-              size={30}
-              color="white"
-            />
+            <Ionicons name="close" size={30} color="white" />
           </TouchableOpacity>
           <Gallery
             data={images}
             initialIndex={galleryIndex}
             style={{marginTop: hp('-10')}}
-            onSwipeToClose={() => {
-              console.log(1);
-            }}
+            onSwipeToClose={closeGallery}
           />
         </>
       ) : (
