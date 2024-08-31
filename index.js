@@ -8,7 +8,12 @@ import {name as appName} from './app.json';
 import {PermissionsAndroid} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
-PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
+
+PermissionsAndroid.requestMultiple([
+  PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+]).then(permissions => {
+  console.log(permissions);
+});
 messaging().setBackgroundMessageHandler(async remoteMessage => {
   console.log('Message handled in the background!', remoteMessage);
 });

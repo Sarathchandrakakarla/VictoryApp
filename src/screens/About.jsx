@@ -2,7 +2,6 @@ import {
   FlatList,
   Image,
   ImageBackground,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -54,7 +53,9 @@ const About = () => {
     <ScrollView style={styles.container}>
       <View>
         <ImageBackground
-          source={require('../assets/about.jpg')}
+          source={{
+            uri: 'https://victoryschools.in/Victory/App Files/Images/about.jpg',
+          }}
           style={styles.div1}></ImageBackground>
       </View>
       <View style={styles.div2}>
@@ -62,7 +63,9 @@ const About = () => {
         <View style={{flexDirection: 'row', gap: 50, marginTop: 50}}>
           <View style={styles.card}>
             <Image
-              source={require('../assets/principal.jpg')}
+              source={{
+                uri: 'https://victoryschools.in/Victory/App Files/Images/principal.jpg',
+              }}
               style={styles.card_img}
             />
             <Text style={styles.card_text}>K. Ramakrishna Reddy</Text>
@@ -70,7 +73,9 @@ const About = () => {
           </View>
           <View style={styles.card}>
             <Image
-              source={require('../assets/correspondent.jpg')}
+              source={{
+                uri: 'https://victoryschools.in/Victory/App Files/Images/correspondent.jpg',
+              }}
               style={styles.card_img}
             />
             <Text style={styles.card_text}>A. Narasimha Reddy</Text>
@@ -168,7 +173,9 @@ const About = () => {
             celebrate all festivals in harmony with all religious people.
           </Text>
           <Image
-            source={require('../assets/event1.jpg')}
+            source={{
+              uri: 'https://victoryschools.in/Victory/App Files/Images/event1.jpg',
+            }}
             style={{
               width: wp('85'),
               height: hp('23'),
@@ -178,7 +185,9 @@ const About = () => {
             }}
           />
           <Image
-            source={require('../assets/event2.jpg')}
+            source={{
+              uri: 'https://victoryschools.in/Victory/App Files/Images/event2.jpg',
+            }}
             style={{
               width: wp('85'),
               height: hp('23'),

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
 } from 'react-native';
+import {Checkbox} from 'react-native-paper';
 import React, {useEffect, useState} from 'react';
 import {
   widthPercentageToDP as wp,
@@ -16,6 +17,7 @@ import {
 import {Picker} from '@react-native-picker/picker';
 import axios from 'axios';
 const SendNotifications = () => {
+  const [temporary, setTemporary] = useState(false);
   const [Topic, setTopic] = useState();
   const [Notification, setNotification] = useState();
   const [readOnly, setReadOnly] = useState(true);
@@ -68,6 +70,7 @@ const SendNotifications = () => {
         {
           Topic: Topic,
           Text: text,
+          Temporary: temporary,
         },
         {
           timeout: 20000,
@@ -151,6 +154,16 @@ const SendNotifications = () => {
             numberOfLines={4}
             readOnly={readOnly}
           />
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Checkbox
+              status={temporary ? 'checked' : 'unchecked'}
+              onPress={() => {
+                setTemporary(!temporary);
+              }}
+              color="blue"
+            />
+            <Text style={{color: '#000'}}>Temporary Notification</Text>
+          </View>
           <View
             style={{alignItems: 'center', flexDirection: 'row', gap: wp('2')}}>
             <TouchableOpacity

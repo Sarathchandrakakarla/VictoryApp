@@ -17,7 +17,10 @@ import {
 const Home = p => {
   return (
     <ScrollView style={styles.container}>
-      <ImageBackground source={require('../assets/background.jpg')}>
+      <ImageBackground
+        source={{
+          uri: 'https://victoryschools.in/Victory/App Files/Images/background.jpg',
+        }}>
         <View
           style={{
             flexDirection: 'row',
@@ -48,7 +51,9 @@ const Home = p => {
       <View style={styles.div2}>
         <View>
           <Image
-            source={require('../assets/building.jpg')}
+            source={{
+              uri: 'https://victoryschools.in/Victory/App Files/Images/building.jpg',
+            }}
             style={{
               width: wp('90'),
               height: hp('20'),
@@ -96,7 +101,9 @@ const Home = p => {
                     p.navigation.navigate('Logins');
                   }}>
                   <Image
-                    source={require('../assets/user.png')}
+                    source={{
+                      uri: 'https://victoryschools.in/Victory/App Files/Images/user.png',
+                    }}
                     style={styles.card_img}
                   />
                 </TouchableHighlight>
@@ -113,7 +120,9 @@ const Home = p => {
                     p.navigation.navigate('Logins');
                   }}>
                   <Image
-                    source={require('../assets/attendance.png')}
+                    source={{
+                      uri: 'https://victoryschools.in/Victory/App Files/Images/attendance.png',
+                    }}
                     style={styles.card_img}
                   />
                 </TouchableHighlight>
@@ -132,7 +141,9 @@ const Home = p => {
                     p.navigation.navigate('Logins');
                   }}>
                   <Image
-                    source={require('../assets/performance.png')}
+                    source={{
+                      uri: 'https://victoryschools.in/Victory/App Files/Images/performance.png',
+                    }}
                     style={styles.card_img}
                   />
                 </TouchableHighlight>
@@ -149,7 +160,9 @@ const Home = p => {
                     p.navigation.navigate('Logins');
                   }}>
                   <Image
-                    source={require('../assets/homework.png')}
+                    source={{
+                      uri: 'https://victoryschools.in/Victory/App Files/Images/homework.png',
+                    }}
                     style={styles.card_img}
                   />
                 </TouchableHighlight>

@@ -51,7 +51,9 @@ const Dashboard = () => {
     <SafeAreaView>
       <View style={{height: hp('100%'), backgroundColor: '#E6E6FA'}}>
         <ImageBackground
-          source={require('../../assets/background.jpg')}
+          source={{
+            uri: 'https://victoryschools.in/Victory/App Files/Images/background.jpg',
+          }}
           imageStyle={{borderRadius: 30}}
           style={styles.div1}></ImageBackground>
         <ImageBackground

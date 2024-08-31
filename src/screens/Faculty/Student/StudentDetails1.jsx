@@ -14,18 +14,34 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import urlExist from 'url-exist';
 const StudentDetails = () => {
   const [Id_No, setIdNo] = useState('');
-  const [imgStudent, setImgStudent] = useState(false);
-  const [imgMale, setImgMale] = useState(false);
-  const [imgFemale, setImgFemale] = useState(false);
   const [details, SetDetails] = useState([]);
   function getDetails(id_no) {
     if (id_no == '') {
       ToastAndroid.show('Please Enter Student Id No.', ToastAndroid.SHORT);
       return;
     }
+    //https://victoryserver.onrender.com
+    /* fetch('http://18.61.98.208:3000/student/viewdetails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        Id_No: id_no,
+      }),
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log(res);
+        if (!res.success) {
+          SetDetails([]);
+          ToastAndroid.show(res.message, ToastAndroid.SHORT);
+        } else {
+          SetDetails([res.data]);
+        }
+      }); */
     axios
       .post(
         'http://18.61.98.208:3000/student/viewdetails',
@@ -48,40 +64,10 @@ const StudentDetails = () => {
         ToastAndroid.show('Error: ' + err, ToastAndroid.SHORT);
       });
   }
-  useEffect(() => {
-    async function urlexists(url) {
-      return urlExist(url).then(val => {
-        return val;
-      });
-    }
-    if (details && details.length != 0) {
-      urlexists(
-        'https://victoryschools.in/Victory/Images/stu_img/' +
-          details[1][1] +
-          '.jpg',
-      ).then(res => {
-        setImgStudent(res);
-      });
-      urlexists(
-        'https://victoryschools.in/Victory/Images/parent_img_male/' +
-          details[1][1] +
-          '.jpg',
-      ).then(res => {
-        setImgMale(res);
-      });
-      urlexists(
-        'https://victoryschools.in/Victory/Images/parent_img_female/' +
-          details[1][1] +
-          '.jpg',
-      ).then(res => {
-        setImgFemale(res);
-      });
-    }
-  }, [details]);
   return (
     <ScrollView style={styles.container}>
       <View style={{flexDirection: 'row'}}>
-        <Text style={{color: '#000', marginTop: hp('5'), marginLeft: wp('5')}}>
+        <Text style={{color: '#000', marginTop: hp("5"), marginLeft: wp("5")}}>
           Student Id No.
         </Text>
 
@@ -94,7 +80,7 @@ const StudentDetails = () => {
         />
       </View>
       <View style={{alignItems: 'center'}}>
-        <View style={{flexDirection: 'row', gap: wp('5')}}>
+        <View style={{flexDirection: 'row', gap: wp("5")}}>
           <TouchableOpacity
             style={styles.button_show}
             onPress={() => getDetails(Id_No)}>
@@ -113,84 +99,15 @@ const StudentDetails = () => {
       {details.length != 0 ? (
         <View style={styles.details_container}>
           <View style={styles.image_container}>
-            {imgStudent ? (
-              <Image
-                source={{
-                  uri:
-                    'https://victoryschools.in/Victory/Images/stu_img/' +
-                    details[1][1] +
-                    '.jpg',
-                }}
-                style={{width: wp('38'), height: wp('45'), borderRadius: 10}}
-              />
-            ) : (
-              <>
-                <Image
-                  source={{
-                    uri: 'https://victoryschools.in/Victory/Images/stu_img/not_photo.jpg',
-                  }}
-                  style={{
-                    width: wp('38'),
-                    height: wp('45'),
-                    borderRadius: 10,
-                  }}
-                />
-              </>
-            )}
-          </View>
-          <View style={{flexDirection: 'row', justifyContent:"center"}}>
-            <View style={styles.image_container}>
-              {imgMale ? (
-                <Image
-                  source={{
-                    uri:
-                      'https://victoryschools.in/Victory/Images/parent_img_male/' +
-                      details[1][1] +
-                      '.jpg',
-                  }}
-                  style={{width: wp('38'), height: wp('45'), borderRadius: 10}}
-                />
-              ) : (
-                <>
-                  <Image
-                    source={{
-                      uri: 'https://victoryschools.in/Victory/Images/parent_img_male/not_photo.jpg',
-                    }}
-                    style={{
-                      width: wp('38'),
-                      height: wp('45'),
-                      borderRadius: 10,
-                    }}
-                  />
-                </>
-              )}
-            </View>
-            <View style={styles.image_container}>
-              {imgFemale ? (
-                <Image
-                  source={{
-                    uri:
-                      'https://victoryschools.in/Victory/Images/parent_img_female/' +
-                      details[1][1] +
-                      '.jpg',
-                  }}
-                  style={{width: wp('38'), height: wp('45'), borderRadius: 10}}
-                />
-              ) : (
-                <>
-                  <Image
-                    source={{
-                      uri: 'https://victoryschools.in/Victory/Images/parent_img_female/not_photo.jpg',
-                    }}
-                    style={{
-                      width: wp('38'),
-                      height: wp('45'),
-                      borderRadius: 10,
-                    }}
-                  />
-                </>
-              )}
-            </View>
+            <Image
+              source={{
+                uri:
+                  'https://victoryschools.in/Victory/Images/stu_img/' +
+                  details[1][1] +
+                  '.jpg',
+              }}
+              style={{width: wp("38"), height: wp("45"), borderRadius: 10}}
+            />
           </View>
           <DataTable style={styles.table_container}>
             <ScrollView
@@ -220,15 +137,11 @@ const StudentDetails = () => {
                   }
                   return (
                     <DataTable.Row key={index}>
-                      <DataTable.Cell style={{width: wp('40')}}>
+                      <DataTable.Cell style={{width: wp("40")}}>
                         {col[0]}
                       </DataTable.Cell>
                       <DataTable.Cell
-                        style={{
-                          width: wp('60'),
-                          maxWidth: wp('150'),
-                          overflow: 'scroll',
-                        }}>
+                        style={{width: wp("60"), maxWidth: wp("150"), overflow: 'scroll'}}>
                         {col[1]}
                       </DataTable.Cell>
                     </DataTable.Row>
@@ -252,9 +165,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#E6E6FA',
   },
   input: {
-    width: wp('50'),
-    height: hp('5'),
-    margin: wp('7'),
+    width: wp("50"),
+    height: hp("5"),
+    margin: wp("7"),
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
@@ -275,16 +188,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   details_container: {
-    marginTop: hp('4'),
+    marginTop: hp("4"),
     elevation: 5,
     backgroundColor: '#DBD7D2',
-    marginHorizontal: wp('4'),
+    marginHorizontal: wp("4"),
     borderRadius: 10,
-    marginBottom: hp('5'),
+    marginBottom: hp("5"),
   },
   image_container: {
     alignItems: 'center',
-    margin: wp('3'),
+    margin: wp("3"),
   },
   table_container: {
     backgroundColor: '#fff',

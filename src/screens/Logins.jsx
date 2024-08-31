@@ -10,7 +10,10 @@ import {
 } from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import { widthPercentageToDP as wp,heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 const Logins = () => {
   const navigation = useNavigation();
   let logins = [
@@ -40,21 +43,38 @@ const Logins = () => {
     <ScrollView style={styles.container}>
       {logins.map(login => {
         return (
-          <ImageBackground source={require("../assets/1.jpg")} imageStyle={{borderRadius:20}} style={styles.login} key={login.id}>
+          <ImageBackground
+            source={{
+              uri: 'https://victoryschools.in/Victory/App Files/Images/background2.jpg',
+            }}
+            imageStyle={{borderRadius: 20}}
+            style={styles.login}
+            key={login.id}>
             <Text
               style={{
                 color: '#fff',
                 marginVertical: 10,
-                fontSize: wp("5"),
-                fontFamily:"RobotoSlab-Bold",
+                fontSize: wp('5'),
+                fontFamily: 'RobotoSlab-Bold',
               }}>
               {login.Title}
             </Text>
-            <Text style={{color: '#fff', marginVertical: 10,textAlign:"justify",fontFamily:"RobotoSlab_Regular",fontSize:wp("3.3")}}>
+            <Text
+              style={{
+                color: '#fff',
+                marginVertical: 10,
+                textAlign: 'justify',
+                fontFamily: 'RobotoSlab_Regular',
+                fontSize: wp('3.3'),
+              }}>
               {login.Content}
             </Text>
-            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate(login.url)}>
-              <Text style={{color: '#000',fontFamily:"RobotoSlab_Regular"}}>{login.Title}</Text>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate(login.url)}>
+              <Text style={{color: '#000', fontFamily: 'RobotoSlab_Regular'}}>
+                {login.Title}
+              </Text>
             </TouchableOpacity>
           </ImageBackground>
         );
@@ -68,23 +88,23 @@ export default Logins;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:"#E6E6FA"
+    backgroundColor: '#E6E6FA',
   },
   login: {
-    height: hp("29"),
+    height: hp('29'),
     borderColor: '#000',
     marginVertical: 10,
     alignItems: 'center',
-    margin:40,
-    marginHorizontal:wp("5"),
-    padding:10,
-    resizeMode:"contain",
+    margin: 40,
+    marginHorizontal: wp('5'),
+    padding: 10,
+    resizeMode: 'contain',
   },
   button: {
     backgroundColor: '#fff',
-    width: wp("50"),
+    width: wp('50'),
     padding: 10,
-    marginTop: hp("1"),
+    marginTop: hp('1'),
     borderRadius: 50,
     alignItems: 'center',
   },

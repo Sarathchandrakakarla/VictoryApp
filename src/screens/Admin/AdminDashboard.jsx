@@ -8,8 +8,10 @@ import {
 } from '@react-navigation/drawer';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import StudentDetails from './Student/StudentDetails';
+import Camera from './Camera';
 import SearchStudent from './Student/SearchStudent';
 import Dashboard from './Dashboard';
+import CamGallery from './CamGallery';
 import StudentAttendance from './Student/StudentAttendance';
 import DateWiseAttendance from './Student/DateWiseAttendance';
 import ClassWiseMarks from './Student/ClassWiseMarks';
@@ -158,6 +160,11 @@ function AdminDashboard({onLogout}) {
         <Stack.Screen name="DrawerNav" options={{headerShown: false}}>
           {props => <DrawerNav {...props} logout={onLogout} />}
         </Stack.Screen>
+        <Stack.Screen
+          name="CamGallery"
+          component={CamGallery}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

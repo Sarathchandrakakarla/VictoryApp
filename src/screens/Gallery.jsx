@@ -8,13 +8,12 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Gallery from 'react-native-awesome-gallery';
-import {Card, Text} from 'react-native-paper';
+import {Card} from 'react-native-paper';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {GestureHandlerRootView, Swipeable} from 'react-native-gesture-handler';
 const Home = props => {
   const images = [];
   for (let i = 1; i <= 21; i++) {

@@ -52,7 +52,8 @@ const Dashboard = () => {
                 .then(() => {});
               AsyncStorage.getItem('Topics').then(topics => {
                 let topicsArray = JSON.parse(topics);
-                if (!topicsArray.includes(res.data.Class.replace(' ', '_'))) topicsArray.push(res.data.Class.replace(' ', '_'));
+                if (!topicsArray.includes(res.data.Class.replace(' ', '_')))
+                  topicsArray.push(res.data.Class.replace(' ', '_'));
                 AsyncStorage.setItem('Topics', JSON.stringify(topicsArray));
               });
             })
@@ -81,7 +82,9 @@ const Dashboard = () => {
     <SafeAreaView>
       <View style={{height: hp('100%'), backgroundColor: '#E6E6FA'}}>
         <ImageBackground
-          source={require('../../assets/background.jpg')}
+          source={{
+            uri: 'https://victoryschools.in/Victory/App Files/Images/background.jpg',
+          }}
           imageStyle={{borderRadius: 30}}
           style={styles.div1}></ImageBackground>
         <ImageBackground

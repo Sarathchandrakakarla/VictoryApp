@@ -14,12 +14,16 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import urlExist from 'url-exist';
 import axios from 'axios';
 const Profile = () => {
   const [username, setUsername] = useState();
   const [loading, setLoading] = useState(true);
   const [loaded, setLoaded] = useState(false);
   const [details, setDetails] = useState([]);
+  const [imgStudent, setImgStudent] = useState(false);
+  const [imgMale, setImgMale] = useState(false);
+  const [imgFemale, setImgFemale] = useState(false);
   async function getUsername() {
     await AsyncStorage.getItem('Username').then(name => setUsername(name));
   }
@@ -40,8 +44,40 @@ const Profile = () => {
   useEffect(() => {
     getUsername().then(() => getDetails());
   });
+
   useEffect(() => {
     if (details.length != 0) setLoaded(true);
+  }, [details]);
+
+  useEffect(() => {
+    async function urlexists(url) {
+      return urlExist(url).then(val => {
+        return val;
+      });
+    }
+    if (details && details.length != 0) {
+      urlexists(
+        'https://victoryschools.in/Victory/Images/stu_img/' +
+          details[1][1] +
+          '.jpg',
+      ).then(res => {
+        setImgStudent(res);
+      });
+      urlexists(
+        'https://victoryschools.in/Victory/Images/parent_img_male/' +
+          details[1][1] +
+          '.jpg',
+      ).then(res => {
+        setImgMale(res);
+      });
+      urlexists(
+        'https://victoryschools.in/Victory/Images/parent_img_female/' +
+          details[1][1] +
+          '.jpg',
+      ).then(res => {
+        setImgFemale(res);
+      });
+    }
   }, [details]);
 
   return (
@@ -51,15 +87,92 @@ const Profile = () => {
         {loaded && details.length != 0 ? (
           <View style={styles.details_container}>
             <View style={styles.image_container}>
-              <Image
-                source={{
-                  uri:
-                    'https://victoryschools.in/Victory/Images/stu_img/' +
-                    details[1][1] +
-                    '.jpg',
-                }}
-                style={{width: wp('38'), height: wp('45'), borderRadius: 10}}
-              />
+              {imgStudent ? (
+                <Image
+                  source={{
+                    uri:
+                      'https://victoryschools.in/Victory/Images/stu_img/' +
+                      details[1][1] +
+                      '.jpg',
+                  }}
+                  style={{width: wp('38'), height: wp('45'), borderRadius: 10}}
+                />
+              ) : (
+                <>
+                  <Image
+                    source={{
+                      uri: 'https://victoryschools.in/Victory/Images/stu_img/not_photo.jpg',
+                    }}
+                    style={{
+                      width: wp('38'),
+                      height: wp('45'),
+                      borderRadius: 10,
+                    }}
+                  />
+                </>
+              )}
+            </View>
+            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+              <View style={styles.image_container}>
+                {imgMale ? (
+                  <Image
+                    source={{
+                      uri:
+                        'https://victoryschools.in/Victory/Images/parent_img_male/' +
+                        details[1][1] +
+                        '.jpg',
+                    }}
+                    style={{
+                      width: wp('38'),
+                      height: wp('45'),
+                      borderRadius: 10,
+                    }}
+                  />
+                ) : (
+                  <>
+                    <Image
+                      source={{
+                        uri: 'https://victoryschools.in/Victory/Images/parent_img_male/not_photo.jpg',
+                      }}
+                      style={{
+                        width: wp('38'),
+                        height: wp('45'),
+                        borderRadius: 10,
+                      }}
+                    />
+                  </>
+                )}
+              </View>
+              <View style={styles.image_container}>
+                {imgFemale ? (
+                  <Image
+                    source={{
+                      uri:
+                        'https://victoryschools.in/Victory/Images/parent_img_female/' +
+                        details[1][1] +
+                        '.jpg',
+                    }}
+                    style={{
+                      width: wp('38'),
+                      height: wp('45'),
+                      borderRadius: 10,
+                    }}
+                  />
+                ) : (
+                  <>
+                    <Image
+                      source={{
+                        uri: 'https://victoryschools.in/Victory/Images/parent_img_female/not_photo.jpg',
+                      }}
+                      style={{
+                        width: wp('38'),
+                        height: wp('45'),
+                        borderRadius: 10,
+                      }}
+                    />
+                  </>
+                )}
+              </View>
             </View>
             <DataTable style={styles.table_container}>
               <ScrollView
