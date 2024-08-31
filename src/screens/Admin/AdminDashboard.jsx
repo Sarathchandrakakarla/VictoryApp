@@ -161,6 +161,11 @@ function AdminDashboard({onLogout}) {
           {props => <DrawerNav {...props} logout={onLogout} />}
         </Stack.Screen>
         <Stack.Screen
+          name="Camera"
+          component={Camera}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="CamGallery"
           component={CamGallery}
           options={{headerShown: false}}
