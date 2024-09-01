@@ -138,18 +138,25 @@ const StudentDetails = () => {
               </>
             )}
           </View>
-          <View style={{flexDirection: 'row', justifyContent:"center"}}>
+          <View style={{flexDirection: 'row', justifyContent: 'center'}}>
             <View style={styles.image_container}>
               {imgMale ? (
-                <Image
-                  source={{
-                    uri:
-                      'https://victoryschools.in/Victory/Images/parent_img_male/' +
-                      details[1][1] +
-                      '.jpg',
-                  }}
-                  style={{width: wp('38'), height: wp('45'), borderRadius: 10}}
-                />
+                <>
+                  <Image
+                    source={{
+                      uri:
+                        'https://victoryschools.in/Victory/Images/parent_img_male/' +
+                        details[1][1] +
+                        '.jpg',
+                    }}
+                    style={{
+                      width: wp('38'),
+                      height: wp('45'),
+                      borderRadius: 10,
+                    }}
+                  />
+                  <Text style={{color: '#000'}}>Father Image</Text>
+                </>
               ) : (
                 <>
                   <Image
@@ -162,20 +169,28 @@ const StudentDetails = () => {
                       borderRadius: 10,
                     }}
                   />
+                  <Text style={{color: '#000'}}>Father Image</Text>
                 </>
               )}
             </View>
             <View style={styles.image_container}>
               {imgFemale ? (
-                <Image
-                  source={{
-                    uri:
-                      'https://victoryschools.in/Victory/Images/parent_img_female/' +
-                      details[1][1] +
-                      '.jpg',
-                  }}
-                  style={{width: wp('38'), height: wp('45'), borderRadius: 10}}
-                />
+                <>
+                  <Image
+                    source={{
+                      uri:
+                        'https://victoryschools.in/Victory/Images/parent_img_female/' +
+                        details[1][1] +
+                        '.jpg',
+                    }}
+                    style={{
+                      width: wp('38'),
+                      height: wp('45'),
+                      borderRadius: 10,
+                    }}
+                  />
+                  <Text style={{color: '#000'}}>Mother Image</Text>
+                </>
               ) : (
                 <>
                   <Image
@@ -188,6 +203,7 @@ const StudentDetails = () => {
                       borderRadius: 10,
                     }}
                   />
+                  <Text style={{color: '#000'}}>Mother Image</Text>
                 </>
               )}
             </View>

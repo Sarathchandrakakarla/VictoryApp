@@ -257,7 +257,6 @@ const StudentDetails = props => {
         <Text style={{color: '#000', marginTop: hp('5'), marginLeft: wp('5')}}>
           Student Id No.
         </Text>
-
         <TextInput
           style={styles.input}
           placeholder="Id No."
@@ -344,6 +343,7 @@ const StudentDetails = props => {
                     borderRadius: 10,
                   }}
                 />
+                <Text style={{color: '#000'}}>Mother Image</Text>
                 <View style={{flexDirection: 'row', gap: 20}}>
                   <TouchableOpacity
                     onPress={() => {
@@ -380,6 +380,7 @@ const StudentDetails = props => {
                       borderRadius: 10,
                     }}
                   />
+                  <Text style={{color: '#000'}}>Father Image</Text>
                   <View style={{flexDirection: 'row', gap: 20}}>
                     <TouchableOpacity
                       onPress={() => {
@@ -430,6 +431,7 @@ const StudentDetails = props => {
                       borderRadius: 10,
                     }}
                   />
+                  <Text style={{color: '#000'}}>Father Image</Text>
                   <View style={{flexDirection: 'row', gap: 20}}>
                     <TouchableOpacity
                       onPress={() => {
@@ -466,6 +468,7 @@ const StudentDetails = props => {
                       borderRadius: 10,
                     }}
                   />
+                  <Text style={{color: '#000'}}>Mother Image</Text>
                   <View style={{flexDirection: 'row', gap: 20}}>
                     <TouchableOpacity
                       onPress={() => {
@@ -516,6 +519,7 @@ const StudentDetails = props => {
                       borderRadius: 10,
                     }}
                   />
+                  <Text style={{color: '#000'}}>Mother Image</Text>
                   <View style={{flexDirection: 'row', gap: 20}}>
                     <TouchableOpacity
                       onPress={() => {
