@@ -343,7 +343,6 @@ const StudentDetails = props => {
                     borderRadius: 10,
                   }}
                 />
-                <Text style={{color: '#000'}}>Mother Image</Text>
                 <View style={{flexDirection: 'row', gap: 20}}>
                   <TouchableOpacity
                     onPress={() => {
