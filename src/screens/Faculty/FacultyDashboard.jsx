@@ -52,20 +52,6 @@ function DrawerNav(p) {
   useEffect(() => {
     AsyncStorage.getItem('Role').then(role => {
       setRole(role);
-      if (Role === 'Faculty_Admin') {
-        menus['Attendance']['submenus'].push(
-          {
-            name: 'Van Attendance',
-            icon: 'person-add',
-            route: 'VanAttendance',
-          },
-          {
-            name: 'Van Attendance View',
-            icon: 'people',
-            route: 'Date_Wise_Van_Attendance',
-          },
-        );
-      }
     });
   });
   let menus = {
@@ -139,6 +125,34 @@ function DrawerNav(p) {
       route: 'Reset_Password',
     },
   };
+  if (Role && Role == 'Faculty_Admin') {
+    if (
+      !menus['Attendance']['submenus'].includes({
+        name: 'Van Attendance',
+        icon: 'person-add',
+        route: 'VanAttendance',
+      })
+    ) {
+      menus['Attendance']['submenus'].push({
+        name: 'Van Attendance',
+        icon: 'person-add',
+        route: 'VanAttendance',
+      });
+    }
+    if (
+      !menus['Attendance']['submenus'].includes({
+        name: 'Van Attendance View',
+        icon: 'people',
+        route: 'Date_Wise_Van_Attendance',
+      })
+    ) {
+      menus['Attendance']['submenus'].push({
+        name: 'Van Attendance View',
+        icon: 'people',
+        route: 'Date_Wise_Van_Attendance',
+      });
+    }
+  }
   return (
     <Drawer.Navigator
       useLegacyImplementation={false}
