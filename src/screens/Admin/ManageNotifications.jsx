@@ -195,17 +195,17 @@ const ManageNotifications = () => {
                         <></>
                       )}
                       <DataTable.Cell
-                        style={{width: wp('60')}}
+                        style={{width: wp('50'), marginLeft: wp('8')}}
                         textStyle={{fontWeight: 'bold'}}>
                         Text
                       </DataTable.Cell>
                       <DataTable.Cell
-                        style={{width: wp('20')}}
+                        style={{width: wp('24')}}
                         textStyle={{fontWeight: 'bold'}}>
                         Date
                       </DataTable.Cell>
                       <DataTable.Cell
-                        style={{width: wp('20')}}
+                        style={{width: wp('20'), marginLeft: wp('2')}}
                         textStyle={{fontWeight: 'bold'}}>
                         Actions
                       </DataTable.Cell>
@@ -217,7 +217,7 @@ const ManageNotifications = () => {
                             {s_no++}
                           </DataTable.Cell>
                           {Topic && Topic == 'All Notifications' ? (
-                            <DataTable.Cell>
+                            <DataTable.Cell style={{width:wp("10")}}>
                               {Notification.Topic}
                             </DataTable.Cell>
                           ) : (
@@ -236,11 +236,11 @@ const ManageNotifications = () => {
                               {Notification.Body}
                             </Text>
                           </DataTable.Cell>
-                          <DataTable.Cell style={{width: wp('20')}}>
+                          <DataTable.Cell style={{width: wp('24')}}>
                             {Notification.Date}
                           </DataTable.Cell>
                           <DataTable.Cell
-                            style={{width: wp('20'), paddingLeft: wp('10')}}>
+                            style={{width: wp('20'), paddingLeft: wp('5')}}>
                             <Text
                               onPress={() => {
                                 Alert.alert(

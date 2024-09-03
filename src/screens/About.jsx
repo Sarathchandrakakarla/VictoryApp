@@ -2,6 +2,8 @@ import {
   FlatList,
   Image,
   ImageBackground,
+  Linking,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,7 +14,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-const About = () => {
+import {Divider} from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+const About = props => {
   let academics = [
     'Qualified Faculty',
     'Fully Equipped Science Lab',
@@ -197,6 +201,23 @@ const About = () => {
             }}
           />
         </View>
+        <Divider style={{marginTop: 20}} />
+        <Text
+          style={{
+            color: '#000',
+            marginLeft: 10,
+            marginTop: 10,
+            fontSize: wp("3"),
+          }}>
+          Developed and Maintained by{' '}
+          <Text
+            style={{color: 'blue'}}
+            onPress={() =>
+              Linking.openURL('https://sarathtechgenics.netlify.app')
+            }>
+            Sarath Techgenics
+          </Text>
+        </Text>
       </View>
     </ScrollView>
   );

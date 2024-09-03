@@ -105,7 +105,7 @@ const ResetPassword = () => {
           <TouchableOpacity
             style={styles.button_show}
             onPress={() => changePassword()}>
-            <Text style={{color: '#fff'}}>Submit</Text>
+            <Text style={{color: '#fff'}}>Change Password</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   button_show: {
     backgroundColor: '#006F40',
-    width: wp('35'),
+    width: wp('50'),
     padding: 10,
     marginTop: 0,
     borderRadius: 50,
