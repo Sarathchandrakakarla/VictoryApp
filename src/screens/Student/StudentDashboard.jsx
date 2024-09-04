@@ -40,7 +40,9 @@ function DrawerNav(p) {
     });
   }
   useEffect(() => {
-    getUsername();
+    if (username == '' || !imgUser) {
+      getUsername();
+    }
   });
   let menus = {
     Dashboard: {

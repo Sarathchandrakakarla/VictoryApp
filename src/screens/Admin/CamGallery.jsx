@@ -22,7 +22,7 @@ const CamGallery = props => {
   const [currIndex, setCurrIndex] = useState(0);
   useEffect(() => {
     RNFS.readDir(
-      RNFS.ExternalStorageDirectoryPath + '/Pictures/Victory Schools',
+      RNFS.ExternalStorageDirectoryPath + '/Android/media/com.victoryapp/Files',
     ).then(res => {
       let data = res.filter(val => val.isFile());
       data = data
@@ -35,7 +35,7 @@ const CamGallery = props => {
       if (data && data != [undefined]) setImages(data);
       else setImages([]);
     });
-  }, []);
+  }, [images]);
 
   useEffect(() => {
     PermissionsAndroid.check(

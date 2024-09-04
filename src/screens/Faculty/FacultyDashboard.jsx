@@ -47,7 +47,9 @@ function DrawerNav(p) {
     });
   }
   useEffect(() => {
-    getUsername();
+    if (username == '' || !imgUser) {
+      getUsername();
+    }
   });
   useEffect(() => {
     AsyncStorage.getItem('Role').then(role => {
