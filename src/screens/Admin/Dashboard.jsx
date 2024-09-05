@@ -59,7 +59,11 @@ const Dashboard = () => {
         <ImageBackground
           source={{
             uri:
-              'https://victoryschools.in/Victory/Images/' + username + '.jpg',
+              'https://victoryschools.in/Victory/Images/' +
+              username +
+              '.jpg' +
+              '?random=' +
+              Date.now(),
           }}
           imageStyle={{borderRadius: 50}}
           style={styles.div2}></ImageBackground>

@@ -189,7 +189,9 @@ function DrawerNav(p) {
                       uri:
                         'https://victoryschools.in/Victory/Images/emp_img/' +
                         username +
-                        '.jpg',
+                        '.jpg' +
+                        '?random=' +
+                        Date.now(),
                     }}
                     style={{width: wp('20'), height: hp('10')}}
                     imageStyle={{width: wp('20'), borderRadius: 50}}
@@ -197,7 +199,10 @@ function DrawerNav(p) {
                 ) : (
                   <ImageBackground
                     source={{
-                      uri: 'https://victoryschools.in/Victory/App Files/Images/user1.png',
+                      uri:
+                        'https://victoryschools.in/Victory/App Files/Images/user1.png' +
+                        '?random=' +
+                        Date.now(),
                     }}
                     style={{width: wp('20'), height: hp('10')}}
                     imageStyle={{width: wp('20'), borderRadius: 50}}

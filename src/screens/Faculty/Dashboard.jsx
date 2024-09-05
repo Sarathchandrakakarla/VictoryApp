@@ -58,12 +58,14 @@ const Dashboard = () => {
           imageStyle={{borderRadius: 30}}
           style={styles.div1}></ImageBackground>
         <ImageBackground
-            source={{
-              uri:
-                'https://victoryschools.in/Victory/Images/emp_img/' +
-                username +
-                '.jpg',
-            }}
+          source={{
+            uri:
+              'https://victoryschools.in/Victory/Images/emp_img/' +
+              username +
+              '.jpg' +
+              '?random=' +
+              Date.now(),
+          }}
           imageStyle={{borderRadius: 50}}
           style={styles.div2}></ImageBackground>
         <View style={{width: wp('70')}}>
