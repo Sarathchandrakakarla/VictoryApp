@@ -92,7 +92,7 @@ const Dashboard = () => {
             uri:
               'https://victoryschools.in/Victory/Images/stu_img/' +
               username +
-              '.jpg', +
+              '.jpg' +
               '?random=' +
               Date.now(),
           }}
