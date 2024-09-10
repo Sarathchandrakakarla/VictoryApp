@@ -24,6 +24,7 @@ import StudentDashboard from './src/screens/Student/StudentDashboard';
 import {Alert} from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
 function MainPage() {
   const navigation = useNavigation();
   useEffect(() => {
@@ -118,18 +119,31 @@ function MainPage() {
 const Navigator = () => {
   let [isloggedin, setisloggedin] = useState('false');
   let [usertype, setUserType] = useState(null);
+  let [username, setUsername] = useState(null);
   useEffect(() => {
     const checkLogin = async () => {
       let isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
       isLoggedIn == 'true' ? setisloggedin('true') : '';
       let UserType = await AsyncStorage.getItem('UserType');
       setUserType(UserType);
+      if (isLoggedIn) {
+        let Username = await AsyncStorage.getItem('Username');
+        setUsername(Username);
+      }
     };
 
     checkLogin();
   });
   const handleLogout = async navigation => {
     try {
+      axios
+        .post('http://18.61.98.208:3000/logout', {
+          Username: username,
+          UserType: usertype,
+        })
+        .then(res => {
+          console.log(res.data);
+        });
       AsyncStorage.getItem('Topics').then(topics => {
         let topicsArray = JSON.parse(topics);
         console.log(topicsArray);
