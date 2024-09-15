@@ -75,9 +75,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.victoryapp"
+    namespace "com.victoryschools"
     defaultConfig {
-        applicationId "com.victoryapp"
+        applicationId "com.victoryschools"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 5

@@ -1,4 +1,4 @@
-package com.victoryapp
+package com.victoryschools
 
 import android.app.Application
 import com.facebook.react.PackageList

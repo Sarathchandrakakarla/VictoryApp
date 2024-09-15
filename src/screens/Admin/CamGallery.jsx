@@ -22,7 +22,7 @@ const CamGallery = props => {
   const [currIndex, setCurrIndex] = useState(0);
   useEffect(() => {
     RNFS.readDir(
-      RNFS.ExternalStorageDirectoryPath + '/Android/media/com.victoryapp/Files',
+      RNFS.ExternalStorageDirectoryPath + '/Android/media/com.victoryschools/Files',
     ).then(res => {
       let data = res.filter(val => val.isFile());
       data = data

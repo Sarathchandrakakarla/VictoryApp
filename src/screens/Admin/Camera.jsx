@@ -165,13 +165,13 @@ const CameraPage = p => {
           : 'IMG-' + getTime() + '.jpg';
       RNFS.mkdir(
         RNFS.ExternalStorageDirectoryPath +
-          '/Android/media/com.victoryapp/Files' +
+          '/Android/media/com.victoryschools/Files' +
           img_path,
       ).then(() => {
         RNFS.moveFile(
           photo.path,
           RNFS.ExternalStorageDirectoryPath +
-            '/Android/media/com.victoryapp/Files' +
+            '/Android/media/com.victoryschools/Files' +
             img_path +
             '/' +
             img_name,
@@ -185,7 +185,7 @@ const CameraPage = p => {
               uri:
                 'file://' +
                 RNFS.ExternalStorageDirectoryPath +
-                '/Android/media/com.victoryapp/Files' +
+                '/Android/media/com.victoryschools/Files' +
                 img_path +
                 '/' +
                 img_name,
