@@ -37,7 +37,7 @@ const Dashboard = () => {
   });
   useEffect(() => {
     axios
-      .get('https://api.quotable.io/quotes/random?limit=1&maxLength=120', {
+      .get('http://api.quotable.io/quotes/random?limit=1&maxLength=120', {
         timeout: 30000,
       })
       .then(response => {
@@ -71,13 +71,17 @@ const Dashboard = () => {
           <Text style={styles.title}>Welcome, {'\n' + name}</Text>
         </View>
       </View>
-      <View style={{position: 'absolute', top: 250}}>
-        <Text style={styles.heading}>Pearl of Wisdom</Text>
-        <View style={styles.quote_container}>
-          <Text style={styles.quote_text}>{quote[0]}</Text>
-          <Text style={styles.author_text}>-{quote[1]}</Text>
+      {quote.length != 0 ? (
+        <View style={{position: 'absolute', top: 250}}>
+          <Text style={styles.heading}>Pearl of Wisdom</Text>
+          <View style={styles.quote_container}>
+            <Text style={styles.quote_text}>{quote[0]}</Text>
+            <Text style={styles.author_text}>{'-' + quote[1]}</Text>
+          </View>
         </View>
-      </View>
+      ) : (
+        <></>
+      )}
     </SafeAreaView>
   );
 };
